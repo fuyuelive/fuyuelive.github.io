@@ -165,8 +165,14 @@
   const preloader = {
     endLoading: () => {
       if ($loadingBox.classList.contains('loaded')) return
-      $body.style.overflow = ''
-      $loadingBox.classList.add('loaded')
+      //- $body.style.overflow = ''
+      //- $loadingBox.classList.add('loaded')
+      // 添加延迟效果，单位：毫秒
+      const delayTime = 5000; // 可以根据需要调整这个值
+      setTimeout(() => {
+        $body.style.overflow = ''
+        $loadingBox.classList.add('loaded')
+      }, delayTime)
     },
     initLoading: () => {
       $body.style.overflow = 'hidden'
