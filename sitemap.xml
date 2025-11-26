@@ -1,6 +1,8 @@
-https://example.com/2025/11/19/nginx/
-https://example.com/2025/11/24/ssh/
-https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/nginx/</loc>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://www.jiangdonggeek.cn/2025/11/19/nginx/</loc>
     
     <lastmod>2025-11-24</lastmod>
     
@@ -9,7 +11,7 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
   </url>
   
   <url>
-    <loc>http://example.com/2025/11/24/ssh/</loc>
+    <loc>https://www.jiangdonggeek.cn/2025/11/24/ssh/</loc>
     
     <lastmod>2025-11-24</lastmod>
     
@@ -18,7 +20,7 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
   </url>
   
   <url>
-    <loc>http://example.com/2025/11/17/hello-blog/</loc>
+    <loc>https://www.jiangdonggeek.cn/2025/11/17/hello-blog/</loc>
     
     <lastmod>2025-11-19</lastmod>
     
@@ -27,7 +29,7 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>https://www.jiangdonggeek.cn/about/index.html</loc>
     
     <lastmod>2025-11-19</lastmod>
     
@@ -36,7 +38,7 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>https://www.jiangdonggeek.cn/tags/index.html</loc>
     
     <lastmod>2025-11-17</lastmod>
     
@@ -45,7 +47,7 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
   </url>
   
   <url>
-    <loc>http://example.com/resources/index.html</loc>
+    <loc>https://www.jiangdonggeek.cn/resources/index.html</loc>
     
     <lastmod>2025-11-17</lastmod>
     
@@ -54,7 +56,7 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>https://www.jiangdonggeek.cn/categories/index.html</loc>
     
     <lastmod>2025-11-17</lastmod>
     
@@ -64,7 +66,7 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://www.jiangdonggeek.cn/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -72,28 +74,28 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
 
   
   <url>
-    <loc>http://example.com/tags/%E5%BC%80%E5%A7%8B/</loc>
+    <loc>https://www.jiangdonggeek.cn/tags/%E5%BC%80%E5%A7%8B/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Linux/</loc>
+    <loc>https://www.jiangdonggeek.cn/tags/Linux/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/nginx/</loc>
+    <loc>https://www.jiangdonggeek.cn/tags/nginx/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/ssh/</loc>
+    <loc>https://www.jiangdonggeek.cn/tags/ssh/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -102,21 +104,21 @@ https://example.com/2025/11/17/hello-blog/loc>http://example.com/2025/11/19/ngin
 
   
   <url>
-    <loc>http://example.com/categories/%E5%BC%80%E5%A7%8B/</loc>
+    <loc>https://www.jiangdonggeek.cn/categories/%E5%BC%80%E5%A7%8B/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/nginx/</loc>
+    <loc>https://www.jiangdonggeek.cn/categories/nginx/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/ssh/</loc>
+    <loc>https://www.jiangdonggeek.cn/categories/ssh/</loc>
     <lastmod>2025-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
