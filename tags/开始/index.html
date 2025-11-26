@@ -147,14 +147,8 @@
   const preloader = {
     endLoading: () => {
       if ($loadingBox.classList.contains('loaded')) return
-      //- $body.style.overflow = ''
-      //- $loadingBox.classList.add('loaded')
-      // 添加延迟效果，单位：毫秒
-      const delayTime = Math.random() * 2000; // 可以根据需要调整这个值
-      setTimeout(() => {
-        $body.style.overflow = ''
-        $loadingBox.classList.add('loaded')
-      }, delayTime)
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
     },
     initLoading: () => {
       $body.style.overflow = 'hidden'
@@ -184,7 +178,7 @@
           </div>
           <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/nginx/"><span class="card-category-list-name">nginx</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ssh/"><span class="card-category-list-name">ssh</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BC%80%E5%A7%8B/"><span class="card-category-list-name">开始</span><span class="card-category-list-count">1</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Linux/" style="font-size: 1.5em; color: #99a9bf">Linux</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/nginx/" style="font-size: 1.1em; color: #999">nginx</a> <a href="/tags/%E5%BC%80%E5%A7%8B/" style="font-size: 1.1em; color: #999">开始</a></div></div><div class="card-widget card-archives">
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/nginx/" style="font-size: 1.1em; color: #999">nginx</a> <a href="/tags/Linux/" style="font-size: 1.5em; color: #99a9bf">Linux</a> <a href="/tags/ssh/" style="font-size: 1.1em; color: #999">ssh</a> <a href="/tags/%E5%BC%80%E5%A7%8B/" style="font-size: 1.1em; color: #999">开始</a></div></div><div class="card-widget card-archives">
     <div class="item-headline">
       <i class="fas fa-archive"></i>
       <span>归档</span>
@@ -203,62 +197,62 @@
         </li>
       
     </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">3</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2025-11-16T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">442</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-11-26T03:18:01.076Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By J.dong</span><span class="framework-info"><span> </span><a target="_blank" rel="noopener" href="https://hexo.io"><img src="/img/Frame-Hexo-blue.svg" alt="Hexo Framework" style="height: 20px; vertical-align: middle;"/ loading='lazy'></a><span class="footer-separator">|</span><span></span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src="/img/Theme-Butterfly-6513df.svg" alt="Butterfly Theme" style="height: 20px; vertical-align: middle;"/ loading='lazy'></a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.2"></script><script src="/js/main.js?v=5.5.2"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.umd.js?v=6.1.4"></script><script src="/pluginsSrc/instant.page/instantpage.js?v=5.2.0" type="module"></script><div class="js-pjax"></div><script src="/js/sakuraPlus.js"></script><div id="music-player" class="aplayer"></div><script>
-  // 简单直接的方式初始化播放器
-  (function() {
-    // 等待DOM完全加载
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initPlayer);
-    } else {
-      initPlayer();
-    }
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">3</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2025-11-16T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">442</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-11-26T12:15:12.361Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By J.dong</span><span class="framework-info"><span> </span><a target="_blank" rel="noopener" href="https://hexo.io"><img src="/img/Frame-Hexo-blue.svg" alt="Hexo Framework" style="height: 20px; vertical-align: middle;"/ loading='lazy'></a><span class="footer-separator">|</span><span></span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src="/img/Theme-Butterfly-6513df.svg" alt="Butterfly Theme" style="height: 20px; vertical-align: middle;"/ loading='lazy'></a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.2"></script><script src="/js/main.js?v=5.5.2"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.umd.js?v=6.1.4"></script><div class="js-pjax"></div><script src="/js/sakuraPlus.js"></script><div id="music-player" class="aplayer"></div><script>
+// 简单直接的方式初始化播放器
+(function() {
+  // 等待DOM完全加载
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPlayer);
+  } else {
+    initPlayer();
+  }
+  
+  function initPlayer() {
+    // 直接获取已创建的容器
+    const container = document.getElementById('music-player');
+    if (!container) return;
     
-    function initPlayer() {
-      // 直接获取已创建的容器
-      const container = document.getElementById('music-player');
-      if (!container) return;
-      
-      // 简单的播放器配置
-      const ap = new APlayer({
-        container: container,
-        fixed: true,
-        mini: true,
-        autoplay: false,
-        theme: '#ad7a86',
-        loop: 'all',
-        order: 'list',
-        preload: 'auto',
-        volume: 1.0,
-        mutex: true,
-        listFolded: true,
-        listMaxHeight: '340px',
-        lrcType: 3,
-        audio: [
-          {
-            name: '遇见',
-            artist: '孙燕姿',
-            url: '/music/遇见.mp3',
-            cover: '/music/img/遇见.jpg',
-            lrc: '/music/lrc/遇见-孙燕姿.lrc'
-          },
-          {
-            name: '你走以后',
-            artist: '王恩信Est&二胖u',
-            url: '/music/你走以后.mp3',
-            cover: '/music/img/你走以后.jpg',
-            lrc: ''
-          },
-          {
-            name: 'Shadow Of The Sun-Max Elto',
-            artist: 'Max Elto',
-            url: '/music/Shadow of the sun.mp3',
-            cover: '/music/img/shadow of the sun.jpg',
-            lrc: '/music/lrc/Shadow Of The Sun-Max Elto.lrc'
-          },
-        ]
-      });
-    }
-  })();
+    // 简单的播放器配置
+    const ap = new APlayer({
+      container: container,
+      fixed: true,
+      mini: true,
+      autoplay: false,
+      theme: '#ad7a86',
+      loop: 'all',
+      order: 'list',
+      preload: 'auto',
+      volume: 1.0,
+      mutex: true,
+      listFolded: true,
+      listMaxHeight: '340px',
+      lrcType: 3,
+      audio: [
+        {
+          name: '遇见',
+          artist: '孙燕姿',
+          url: '/music/遇见.mp3',
+          cover: '/music/img/遇见.jpg',
+          lrc: '/music/lrc/遇见-孙燕姿.lrc'
+        },
+        {
+          name: '你走以后',
+          artist: '王恩信Est&二胖u',
+          url: '/music/你走以后.mp3',
+          cover: '/music/img/你走以后.jpg',
+          lrc: ''
+        },
+        {
+          name: 'Shadow Of The Sun-Max Elto',
+          artist: 'Max Elto',
+          url: '/music/Shadow of the sun.mp3',
+          cover: '/music/img/shadow of the sun.jpg',
+          lrc: '/music/lrc/Shadow Of The Sun-Max Elto.lrc'
+        },
+      ]
+    });
+  }
+})();
 </script><script id="click-heart" src="/pluginsSrc/butterfly-extsrc/dist/click-heart.min.js?v=1.1.6" async="async" mobile="false"></script><script id="click-show-text" src="/pluginsSrc/butterfly-extsrc/dist/click-show-text.min.js?v=1.1.6" data-mobile="false" data-text="I,LOVE,YOU,好好吃饭,好好睡觉,好好工作,好好生活,忘记不开心,记得要快乐" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="/pluginsSrc/aplayer/dist/APlayer.min.css?v=1.10.1" media="print" onload="this.media='all'"><script src="/pluginsSrc/aplayer/dist/APlayer.min.js?v=1.10.1"></script><script src="/pluginsSrc/butterfly-extsrc/metingjs/dist/Meting.min.js?v=1.1.6"></script><script>(() => {
   const destroyAplayer = () => {
     if (window.aplayers) {

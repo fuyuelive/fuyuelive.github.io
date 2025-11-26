@@ -1,3 +1,15 @@
+https://www.jiangdonggeek.cn
+https://www.jiangdonggeek.cn/2025/11/17/hello-blog/
 https://www.jiangdonggeek.cn/2025/11/19/nginx/
 https://www.jiangdonggeek.cn/2025/11/24/ssh/
-https://www.jiangdonggeek.cn/2025/11/17/hello-blog/
+https://www.jiangdonggeek.cn/about/index.html
+https://www.jiangdonggeek.cn/categories/%E5%BC%80%E5%A7%8B/
+https://www.jiangdonggeek.cn/categories/index.html
+https://www.jiangdonggeek.cn/categories/nginx/
+https://www.jiangdonggeek.cn/categories/ssh/
+https://www.jiangdonggeek.cn/resources/index.html
+https://www.jiangdonggeek.cn/tags/%E5%BC%80%E5%A7%8B/
+https://www.jiangdonggeek.cn/tags/Linux/
+https://www.jiangdonggeek.cn/tags/index.html
+https://www.jiangdonggeek.cn/tags/nginx/
+https://www.jiangdonggeek.cn/tags/ssh/
