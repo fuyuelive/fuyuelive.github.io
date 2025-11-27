@@ -195,11 +195,12 @@ function getHitokoto() {
   const hitokotoElement = document.getElementById('hitokoto');
   hitokotoElement.textContent = '正在加载...';
   fetch('https://v.api.aa1.cn/api/yiyan/index.php')
+  //- fetch('https://v1.hitokoto.cn/?c=f&encode=text')
     .then(response => response.text())
     .then(data => {
       // 去除返回数据中的p标签
       const cleanData = data.replace(/<p[^>]*>|<\/p>/g, '');
-      hitokotoElement.textContent = cleanData;
+      hitokotoElement.textContent = "「" + cleanData + "」";
     })
     .catch(error => {
       console.error('获取一言失败:', error);
