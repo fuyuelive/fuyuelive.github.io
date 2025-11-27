@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.jiangdonggeek.cn/2025/11/27/kali-install-zh/</loc>
+    
+    <lastmod>2025-11-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.jiangdonggeek.cn/2025/11/19/nginx/</loc>
     
     <lastmod>2025-11-24</lastmod>
@@ -67,7 +76,7 @@
 
   <url>
     <loc>https://www.jiangdonggeek.cn/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -75,28 +84,42 @@
   
   <url>
     <loc>https://www.jiangdonggeek.cn/tags/%E5%BC%80%E5%A7%8B/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.jiangdonggeek.cn/tags/Linux/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.jiangdonggeek.cn/tags/nginx/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.jiangdonggeek.cn/tags/ssh/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jiangdonggeek.cn/tags/Kali/</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jiangdonggeek.cn/tags/%E8%BE%93%E5%85%A5%E6%B3%95/</loc>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -105,21 +128,28 @@
   
   <url>
     <loc>https://www.jiangdonggeek.cn/categories/%E5%BC%80%E5%A7%8B/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.jiangdonggeek.cn/categories/nginx/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.jiangdonggeek.cn/categories/ssh/</loc>
-    <lastmod>2025-11-26</lastmod>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.jiangdonggeek.cn/categories/Linux/</loc>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
