@@ -1,6 +1,532 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux常用命令2：文件和目录操作篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A42%EF%BC%9A%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令2：文件和目录操作篇"><a href="#Linux常用命令2：文件和目录操作篇" class="headerlink" title="Linux常用命令2：文件和目录操作篇"></a>Linux常用命令2：文件和目录操作篇</h1><p>在Linux系统中，文件和目录的操作是日常工作的重要组成部分。本文将介绍目录操作和文件操作的常用命令，帮助你高效管理Linux系统中的文件和目录。</p>
+<h2 id="三、目录操作类命令"><a href="#三、目录操作类命令" class="headerlink" title="三、目录操作类命令"></a>三、目录操作类命令</h2><h4 id="1、mkdir-参数-目录名（创建目录）"><a href="#1、mkdir-参数-目录名（创建目录）" class="headerlink" title="*1、mkdir [参数]  目录名（创建目录）"></a>*1、mkdir [参数]  目录名（创建目录）</h4><p>参数：-p 在创建时，如果父目录不存在，则同时创建该目录及父目录</p>
+<p><img src="/linux_command/17.png"></p>
+<h4 id="2、rmdir-参数-目录名（删除目录）"><a href="#2、rmdir-参数-目录名（删除目录）" class="headerlink" title="*2、rmdir [参数] 目录名（删除目录）"></a>*2、rmdir [参数] 目录名（删除目录）</h4><p>参数：-p 在删除时，一同删除父目录（目录内没其他目录及文件时）</p>
+<p><img src="/linux_command/18.png"></p>
+<h2 id="四、文件操作类命令"><a href="#四、文件操作类命令" class="headerlink" title="四、文件操作类命令"></a>四、文件操作类命令</h2><h4 id="1、mv-参数-源文件或目录-目标文件或目录（-用于文件或目录的移动或改名-）"><a href="#1、mv-参数-源文件或目录-目标文件或目录（-用于文件或目录的移动或改名-）" class="headerlink" title="**1、mv [参数] 源文件或目录 目标文件或目录（ 用于文件或目录的移动或改名  ）"></a>**1、mv [参数] 源文件或目录 目标文件或目录（ 用于文件或目录的移动或改名  ）</h4><p> 源文件或目录，表示被移动的文件或文件夹 目标文件或目录，表示要移动去的地方，如果目标不存在，则进行改名，确保目标存在 mv命令的常用参数选项如下。</p>
+<p>  <img src="/linux_command/19.png"></p>
+<p>参数：-i 如果目标文件或目录存在，提示是否覆盖，-f无论目标文件或目录是否存在，直接覆盖，不提示</p>
+<h4 id="2、rm-参数-文件名或目录（删除文件或目录）"><a href="#2、rm-参数-文件名或目录（删除文件或目录）" class="headerlink" title="*2、rm [参数] 文件名或目录（删除文件或目录）"></a>*2、rm [参数] 文件名或目录（删除文件或目录）</h4><p>参数：-i 删除时提示，-r不提示，-R递归删除目录（目录下所有）rm -rf（强制删除该文件及子目录）</p>
+<p><img src="/linux_command/20.png"></p>
+<h4 id="3、touch-参数-文件名或目录（建立文件或更新文件的修改日期）"><a href="#3、touch-参数-文件名或目录（建立文件或更新文件的修改日期）" class="headerlink" title="*3、touch [参数] 文件名或目录（建立文件或更新文件的修改日期）"></a>*3、touch [参数] 文件名或目录（建立文件或更新文件的修改日期）</h4><p>参数：-d yyyymmdd修改为yyyy年mm月dd日，-a 文件存取时间改为当前时间，**-m** 修改时间为当前时间</p>
+<p><img src="/linux_command/21.png"></p>
+<h4 id="4、whereis-参数-命令名称（寻找命令所在文件位置）"><a href="#4、whereis-参数-命令名称（寻找命令所在文件位置）" class="headerlink" title="*4、whereis [参数] 命令名称（寻找命令所在文件位置）"></a>*4、whereis [参数] 命令名称（寻找命令所在文件位置）</h4><p>参数：-b只查二进制文件，-m查命令的联机帮助手册部分，-s查源代码文件</p>
+<p><img src="/linux_command/22.png"></p>
+<h4 id="5、whatis-命令名称（-获取命令简介-）"><a href="#5、whatis-命令名称（-获取命令简介-）" class="headerlink" title="5、whatis 命令名称（ 获取命令简介  ）"></a>5、whatis 命令名称（ 获取命令简介  ）</h4><p><img src="/linux_command/23.png"></p>
+<h4 id="6、find-路径-匹配表达式-（文件查找）注：查找权限时八转二（读取写入执行）（所属同组用户其他用户）"><a href="#6、find-路径-匹配表达式-（文件查找）注：查找权限时八转二（读取写入执行）（所属同组用户其他用户）" class="headerlink" title="*6、find [路径] [匹配表达式]（文件查找）注：查找权限时八转二（读取写入执行）（所属同组用户其他用户）"></a>*6、find [路径] [匹配表达式]（文件查找）注：查找权限时八转二（读取写入执行）（所属同组用户其他用户）</h4><p>参数： <strong>-name</strong> filename：查找指定名称的文件。 </p>
+<p>-user username：查找属于指定用户的文件。</p>
+<p>-group grpname：查找属于指定组的文件。 </p>
+<p>-print：显示查找结果。 </p>
+<p>-size n：查找大小为n块的文件，一块为512B。符号“+n”表示查找大小大于n块的文件；符号“-n”表示 查找大小小于n块的文件。 -inum n：查找索引节点号为n的文件。 </p>
+<p><strong>-type</strong>：查找指定类型的文件。<strong>文件类型</strong>有：b（块设备文件）、c（字符设备文件）、d（目录）、p（管道 文件）、l（符号链接文件）、f（普通文件）。 </p>
+<p>-atime n：查找n天前被访问过的文件。“+n”表示超过n天前被访问的文件；“-n”表示未超过n天前被访 问的文件。 </p>
+<p>-mtime n：类似于atime，但检查的是文件内容被修改的时间。</p>
+<p>-ctime n：类似于atime，但检查的是文件索引节点被改变的时间。</p>
+<p><strong>-perm</strong> 权限数字 查找与给定权限匹配的文件，必须以八进制的形式给出访问权限。</p>
+<p>-newer file：查找比指定文件新的文件，即最后修改时间离现在较近。</p>
+<p>-exec command {} ;：对匹配指定条件的文件执行command命令。</p>
+<p>-ok command {} ;：与exec相同，但执行command命令时请求用户确认。</p>
+<p>  <img src="/linux_command/24.png"></p>
+<h4 id="7、locate-文件（类似于windows搜索）"><a href="#7、locate-文件（类似于windows搜索）" class="headerlink" title="7、locate 文件（类似于windows搜索）"></a>7、locate 文件（类似于windows搜索）</h4><h4 id><a href="#" class="headerlink" title></a><img src="/linux_command/25.png"></h4><h4 id="8、grep-参数-查找字符串-文件名（查找文件中包含指定字符的行）"><a href="#8、grep-参数-查找字符串-文件名（查找文件中包含指定字符的行）" class="headerlink" title="**8、grep [参数] 查找字符串 文件名（查找文件中包含指定字符的行）"></a>**8、grep [参数] 查找字符串 文件名（查找文件中包含指定字符的行）</h4><p>参数： -v：列出不匹配的行。 </p>
+<p>-c：对匹配的行计数。 </p>
+<p>-l：只显示包含匹配模式的文件名。 </p>
+<p>-h：抑制包含匹配模式的文件名的显示。 </p>
+<p>-n：每个匹配行只按照相对的行号显示。 </p>
+<p>-i：对匹配模式不区分大小写。<br>子任务（一）掌握高级使用方法</p>
+<p> 格式：grep [-A] [-B] [–color&#x3D;auto] ‘查找字符串’ filename </p>
+<p>-n：加上行号 </p>
+<p>-v：反向选择 </p>
+<p>-i：不区分大小写 </p>
+<p>-A：后可加数字，英文为after，列出该行和后续的n行。</p>
+<p>-B：后可加数字，英文为befor，列出该行和前面的n行。</p>
+<p>grep [参数] “字符串” 文件（查找指定字符串）</p>
+<p>如果查找字符串加[]时，则会查询列表前后和[]内的一个字符（**”t[ae]st”） [] 里面不论有几个字符，都只代表某一个字符。 而如果想要搜寻到有’oo’的字符时，则使用’’**</p>
+<p>**反向选择[^list] **</p>
+<p><strong>如果不想要’oo’前面有’g’的行显示出来”[^g]oo”</strong></p>
+<p><strong>范围字符[a-zA-Z0-9]或[[:lower:]] [[:upper:]] [[:digit:]]</strong></p>
+<p><strong>首行与尾行字节^$</strong></p>
+<p> **”^word” 在 [] 内代表”反向选择”在 [] 之外则代表定位在行首  **</p>
+<p> 在**查找特殊字符时需加转义字符\（python） **</p>
+<p><strong>特殊字符</strong>： . 代表一个任意字符，*代表重复前一个字符0次到无穷，问号（?）代表匹配单个字符</p>
+<p><strong>特殊字符特殊用法</strong>：^$（找出空白行），.*代表零个或多个任意。</p>
+<p>** {n,m} 意义：连续n～m个的“前一个RE字符” 意义：若为{n} 则是连续n个的前一个RE字符 意义：若是{n,} 则是连续n个以上的前一个RE字  **</p>
+<h5 id="grep练习"><a href="#grep练习" class="headerlink" title="grep练习"></a>grep练习</h5><p>以什么什么开头：</p>
+<p><img src="/linux_command/26.png"></p>
+<p>以什么什么结尾：</p>
+<p><img src="/linux_command/27.png"></p>
+<p>以什么开头并以什么结尾：</p>
+<p><img src="/linux_command/28.png"></p>
+<p>以什么或什么开头：</p>
+<p><img src="/linux_command/29.png"></p>
+<p>包含什么后跟什么：</p>
+<p><img src="/linux_command/30.png"></p>
+<p>包含什么隔一个字母后是什么：</p>
+<p><img src="/linux_command/31.png"></p>
+<p>包含一个数字：</p>
+<p><img src="/linux_command/32.png"></p>
+<p>以什么开头，包含一个什么：</p>
+<p><img src="/linux_command/33.png"></p>
+<p>只含有几个什么：</p>
+<p><img src="/linux_command/34.png"></p>
+<p>只含有几个什么，但不包含什么：</p>
+<p><img src="/linux_command/35.png"></p>
+<h4 id="9、dd-if-输入-of-输出-count-数量-bs-容量大小（复制或转换文件）"><a href="#9、dd-if-输入-of-输出-count-数量-bs-容量大小（复制或转换文件）" class="headerlink" title="9、dd if&#x3D;输入 of&#x3D;输出 count&#x3D;数量 bs&#x3D;容量大小（复制或转换文件）"></a>9、dd if&#x3D;输入 of&#x3D;输出 count&#x3D;数量 bs&#x3D;容量大小（复制或转换文件）</h4><p>参数： if 输入的文件名称，of 输出的文件名称，bs 设置每个“块”的大小 ，count 设置要复制“块”的个数</p>
+<p><img src="/linux_command/36.png"></p>
+<h4 id="10、cp-参数-源文件-目标文件（文件或目录复制）"><a href="#10、cp-参数-源文件-目标文件（文件或目录复制）" class="headerlink" title="*10、cp [参数] 源文件 目标文件（文件或目录复制）"></a>*10、cp [参数] 源文件 目标文件（文件或目录复制）</h4><p>参数： <strong>-a</strong>：尽可能的原样复制包括权限。</p>
+<p>-r：可复制但权限可能会改变。</p>
+<p>-f：如果目标文件或目录存在，先删除再复制（即覆盖），不提示。</p>
+<p>-i：如果目标文件或目录存在，提示是否覆盖已有的文件。 </p>
+<p>-u：目标文件与来源文件有差异时才复制</p>
+<p>-R：递归复制目录和子目录。</p>
+<p><img src="/linux_command/37.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中目录操作和文件操作的常用命令，包括目录的创建、删除，文件的移动、删除、创建、查找等操作。这些命令是Linux日常操作的重要组成部分，掌握它们可以帮助你高效管理系统中的文件和目录。在后续文章中，我们将继续介绍解压缩命令等其他常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令1：基础命令篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A41%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在Linux系统中，基础命令是我们日常操作的基石。本文将介绍浏览目录和浏览文件的常用命令，帮助你快速掌握Linux的基本操作。</p>
+<h2 id="一、浏览目录类命令"><a href="#一、浏览目录类命令" class="headerlink" title="一、浏览目录类命令"></a>一、浏览目录类命令</h2><h4 id="1、pwd（列出当前所在位置）"><a href="#1、pwd（列出当前所在位置）" class="headerlink" title="*1、pwd（列出当前所在位置）"></a>*1、pwd（列出当前所在位置）</h4><p><img src="/linux_command/1.png"></p>
+<h4 id="2、cd-Linux路径"><a href="#2、cd-Linux路径" class="headerlink" title="*2、cd [Linux路径]"></a>*2、cd [Linux路径]</h4><p>进入到文件位置，特殊格式（.代表当前目录，..是上一级目录，~是回到主目录）</p>
+<p><img src="/linux_command/2.png"></p>
+<p><img src="/linux_command/3.png"></p>
+<h4 id="3、ls-参数-目录或文件"><a href="#3、ls-参数-目录或文件" class="headerlink" title="*3、ls [参数] [目录或文件]"></a>*3、ls [参数] [目录或文件]</h4><p>参数：**-a（显示所有文件，包括隐藏文件&#x2F;夹）<strong>，-A（显示指定目录下所有的子目录及文件，包括隐藏文件。但不显示“.”和“..”），-c（按文件修改时间排序），-C（分成多列显示各行），</strong>-l（以列表形式展示内容及更多信息）<strong>，</strong>-d（如果参数是目录，则显示其名称而不显示其下的各个文件。与“-l”一起使用，得到目录的详细信息）*<em>，-i（在无参的基础上多了个节点号），-F（列出当前目录下的文件名及其类型。以&#x2F;结尾表示为目录名，以</em>结尾表示为可执行文件，以@结尾表示为符号连接），-h（文件大小简化了，必须与-l一起使用）</p>
+<p><img src="/linux_command/4.png"></p>
+<p><img src="/linux_command/5.png"></p>
+<p><img src="/linux_command/6.png"></p>
+<p><img src="/linux_command/7.png"></p>
+<p><img src="/linux_command/8.png"></p>
+<p>写法：[ls -l -a ] [ls -la] [ls -al]上述三种写法，都是一样的</p>
+<h2 id="二、浏览文件类命令"><a href="#二、浏览文件类命令" class="headerlink" title="二、浏览文件类命令"></a>二、浏览文件类命令</h2><h4 id="1、cat-参数-文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）"><a href="#1、cat-参数-文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）" class="headerlink" title="*1、cat [参数] 文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）"></a>*1、cat [参数] 文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）</h4><p>参数：-b（对输出内容中非空行标注行号），-n（对所有行标注）</p>
+<p><img src="/linux_command/9.png"></p>
+<p><img src="/linux_command/10.png"></p>
+<p>利用cat命令还可以<strong>合并</strong>多个文件。例如，要把file1和file2文件的内容合并为file3，且file2文件的内容在file1文件的内容前面，则命令为</p>
+<p><img src="/linux_command/11.png"></p>
+<h4 id="2、more-参数-文件名（可一页一页地分屏显示文件内容）"><a href="#2、more-参数-文件名（可一页一页地分屏显示文件内容）" class="headerlink" title="2、more [参数] 文件名（可一页一页地分屏显示文件内容）"></a>2、more [参数] 文件名（可一页一页地分屏显示文件内容）</h4><p>进入more状态后，按enter向下一行，空格是下一页，Q是退出</p>
+<p>参数：-数字（每页行数），+数字（从文件第几行开始显示）</p>
+<p><img src="/linux_command/12.png"></p>
+<h4 id="3、less（比more命令的功能强大）"><a href="#3、less（比more命令的功能强大）" class="headerlink" title="3、less（比more命令的功能强大）"></a>3、less（比more命令的功能强大）</h4><p>进入less状态后，enter下一行，空格下一页，B上一页，方向键可以移动，Q退出，查找文本时使用&#x2F;+查找内容回车即可，继续查找按&#x2F;+回车</p>
+<p>参数：-数字（每页行数），+数字（从文件第几行开始显示）</p>
+<p><img src="/linux_command/13.png"></p>
+<h4 id="4、head-参数-文件名"><a href="#4、head-参数-文件名" class="headerlink" title="*4、head [参数] 文件名"></a>*4、head [参数] 文件名</h4><p>参数：-n 数字（显示前多少行），-c 数字（显示前多少字符）</p>
+<p><img src="/linux_command/14.png"></p>
+<h4 id="5、tail-参数-文件名（查看文件内容，也可以查看系统用户有哪些）"><a href="#5、tail-参数-文件名（查看文件内容，也可以查看系统用户有哪些）" class="headerlink" title="*5、tail [参数] 文件名（查看文件内容，也可以查看系统用户有哪些）"></a>*5、tail [参数] 文件名（查看文件内容，也可以查看系统用户有哪些）</h4><p>参数：-n 数字（显示末尾多少行），-c 数字（显示末尾多少字符），-f 文件名（刷新）</p>
+<p><img src="/linux_command/15.png"></p>
+<p><img src="/linux_command/16.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中最基础的命令，包括浏览目录和浏览文件的常用命令。这些命令是Linux操作的基础，掌握它们可以帮助你快速熟悉Linux系统的文件结构和内容查看方式。在后续文章中，我们将继续介绍更多Linux常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令3：解压缩命令篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A43%EF%BC%9A%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令3：解压缩命令篇"><a href="#Linux常用命令3：解压缩命令篇" class="headerlink" title="Linux常用命令3：解压缩命令篇"></a>Linux常用命令3：解压缩命令篇</h1><p>在Linux系统中，解压缩命令是处理压缩文件的重要工具。本文将介绍常用的解压缩命令，包括tar、gzip、zip和bzip2等，帮助你高效处理各种压缩格式的文件。</p>
+<h1 id="五、解压缩命令"><a href="#五、解压缩命令" class="headerlink" title="五、解压缩命令"></a>五、解压缩命令</h1><h4 id="1、tar-参数-文件-目录名-路径（可解压缩-tar-gz-bz2等文件）"><a href="#1、tar-参数-文件-目录名-路径（可解压缩-tar-gz-bz2等文件）" class="headerlink" title="*1、tar [参数] 文件&#x2F;目录名 路径（可解压缩.tar .gz .bz2等文件）"></a>*1、tar [参数] 文件&#x2F;目录名 路径（可解压缩.tar .gz .bz2等文件）</h4><p>压缩参数：-c：创建一个新的压缩文件，原文件保留。</p>
+<p>-z：使用gzip压缩（需与-c一起使用）。</p>
+<p>-v：显示详细信息。</p>
+<p>-f：指定压缩文件的名称。  </p>
+<p><img src="/linux_command/38.png"></p>
+<p>解压参数： -x：解压文件。</p>
+<p>-z：使用gzip解压（需与-x一起使用）。</p>
+<p>-v：显示详细信息。</p>
+<p>-f：指定要解压的文件 </p>
+<p> <img src="/linux_command/39.png"></p>
+<h4 id="2、gzip-参数-文件（支持-gz解压缩（压缩后不保留源文件））"><a href="#2、gzip-参数-文件（支持-gz解压缩（压缩后不保留源文件））" class="headerlink" title="*2、gzip [参数] 文件（支持.gz解压缩（压缩后不保留源文件））"></a>*2、gzip [参数] 文件（支持.gz解压缩（压缩后不保留源文件））</h4><p>参数：-d：对压缩文件进行解压缩。</p>
+<p>-r：递归压缩指定目录下以及子目录下的所有文件。 </p>
+<p><img src="/linux_command/40.png"></p>
+<h4 id="3、zip-参数-压缩包名-文件路径（创建-zip格式文件）"><a href="#3、zip-参数-压缩包名-文件路径（创建-zip格式文件）" class="headerlink" title="*3、zip [参数] 压缩包名 文件路径（创建.zip格式文件）"></a>*3、zip [参数] 压缩包名 文件路径（创建.zip格式文件）</h4><p>解压的话用unzip 压缩包名	</p>
+<p><img src="/linux_command/41.png"></p>
+<p><img src="/linux_command/42.png"></p>
+<h4 id="4、bzip2-参数-压缩文件（支持-bz2默认压缩后不保留源文件）"><a href="#4、bzip2-参数-压缩文件（支持-bz2默认压缩后不保留源文件）" class="headerlink" title="*4、bzip2 [参数] 压缩文件（支持.bz2默认压缩后不保留源文件）"></a>*4、bzip2 [参数] 压缩文件（支持.bz2默认压缩后不保留源文件）</h4><p>解压的话用bunzip2 [参数] 解压文件</p>
+<p>压缩参数：-k：压缩时保留源文件</p>
+<p><img src="/linux_command/43.png"></p>
+<p>解压缩参数：-d：不保留源文件</p>
+<p>-k：保留源文件</p>
+<p><img src="/linux_command/44.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中常用的解压缩命令，包括tar、gzip、zip和bzip2等。这些命令可以处理各种常见的压缩格式，帮助你在Linux系统中高效地打包和解压文件。掌握这些命令对于日常工作和系统管理非常重要。在后续文章中，我们将继续介绍系统信息和进程管理的常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令4：系统管理篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A44%EF%BC%9A%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令4：系统管理篇"><a href="#Linux常用命令4：系统管理篇" class="headerlink" title="Linux常用命令4：系统管理篇"></a>Linux常用命令4：系统管理篇</h1><p>在Linux系统中，了解系统状态和管理进程是系统管理员的重要职责。本文将介绍查看系统信息和管理进程的常用命令，帮助你监控和维护Linux系统。</p>
+<h1 id="六、使用系统信息类命令"><a href="#六、使用系统信息类命令" class="headerlink" title="六、使用系统信息类命令"></a>六、使用系统信息类命令</h1><h4 id="1、dmesg（显示连接到系统上的设备）"><a href="#1、dmesg（显示连接到系统上的设备）" class="headerlink" title="1、dmesg（显示连接到系统上的设备）"></a>1、dmesg（显示连接到系统上的设备）</h4><p>用实例名和物理名称来标识连到系统上的设备，也用于显示系统诊断信息、操作系统版本号、物理内存大小以及其他信息</p>
+<p><img src="/linux_command/45.png"></p>
+<h4 id="2、free（查看内存占用情况）"><a href="#2、free（查看内存占用情况）" class="headerlink" title="*2、free（查看内存占用情况）"></a>*2、free（查看内存占用情况）</h4><p> 查看系统内存、虚拟内存的大小及占用情况</p>
+<p><img src="/linux_command/46.png"></p>
+<h4 id="3、date（显示时间）"><a href="#3、date（显示时间）" class="headerlink" title="3、date（显示时间）"></a>3、date（显示时间）</h4><p>查看系统当前日期和时间，也可加参数-d来设置当前日期和时间（月日年）</p>
+<p><img src="/linux_command/47.png"></p>
+<p><img src="/linux_command/48.png"></p>
+<h4 id="4、cal（日历）"><a href="#4、cal（日历）" class="headerlink" title="4、cal（日历）"></a>4、cal（日历）</h4><p> 显示指定月份或年份的日历，可以带两个参数，其中，年、 月份用数字表示；只有一个参数时表示年份，年份的范围为1~9999；不带任何参数的cal命令显示当前月份的日历。</p>
+<p><img src="/linux_command/49.png"></p>
+<h4 id="5、vmstat（查看硬件统计信息）"><a href="#5、vmstat（查看硬件统计信息）" class="headerlink" title="5、vmstat（查看硬件统计信息）"></a>5、vmstat（查看硬件统计信息）</h4><p> 提供关于系统虚拟内存、进程、CPU、I&#x2F;O的统计信息，可以用来观察系统的整体性能。</p>
+<p><img src="/linux_command/50.png"></p>
+<p><img src="/linux_command/51.png"></p>
+<h4 id="6、iostat（磁盘监视）"><a href="#6、iostat（磁盘监视）" class="headerlink" title="*6、iostat（磁盘监视）"></a>*6、iostat（磁盘监视）</h4><p> 用于IO的监控，显示磁盘的读写速度。（需安装apt install sysstat）</p>
+<p><img src="/linux_command/52.png"></p>
+<p><img src="/linux_command/53.png"></p>
+<h4 id="7、df（查看磁盘使用情况）"><a href="#7、df（查看磁盘使用情况）" class="headerlink" title="*7、df（查看磁盘使用情况）"></a>*7、df（查看磁盘使用情况）</h4><p><img src="/linux_command/54.png"></p>
+<h4 id="8、netstat（查看网络信息）"><a href="#8、netstat（查看网络信息）" class="headerlink" title="*8、netstat（查看网络信息）"></a>*8、netstat（查看网络信息）</h4><p><img src="/linux_command/55.png"></p>
+<h1 id="七、使用进程管理类命令"><a href="#七、使用进程管理类命令" class="headerlink" title="七、使用进程管理类命令"></a>七、使用进程管理类命令</h1><h4 id="1、命令-（将命令放在后台执行）"><a href="#1、命令-（将命令放在后台执行）" class="headerlink" title="*1、命令 &amp;（将命令放在后台执行）"></a>*1、命令 &amp;（将命令放在后台执行）</h4><p>回显一个作业号和进程号。</p>
+<p><img src="/linux_command/56.png"></p>
+<p>使用jobs命令可以查看终端启动了哪些作业-l时长格式显示结果</p>
+<p><img src="/linux_command/57.png"></p>
+<p>使用<strong>fg +作业号</strong>可将后台转为前台运行</p>
+<p><img src="/linux_command/58.png"></p>
+<p>ctrl+Z暂停前台运行的作业</p>
+<p>使用命令<strong>bg +作业号</strong>可将暂停的前台运行的作业切换到后台</p>
+<p><img src="/linux_command/59.png"></p>
+<h4 id="2、ps（查看进程）"><a href="#2、ps（查看进程）" class="headerlink" title="*2、ps（查看进程）"></a>*2、ps（查看进程）</h4><p>参数：-lf：详细信息</p>
+<p><img src="/linux_command/60.png"></p>
+<p><img src="/linux_command/61.png"></p>
+<p><img src="/linux_command/62.png"></p>
+<p><img src="/linux_command/63.png"></p>
+<h4 id="3、kill（终止程序，常配合ps使用）"><a href="#3、kill（终止程序，常配合ps使用）" class="headerlink" title="*3、kill（终止程序，常配合ps使用）"></a>*3、kill（终止程序，常配合ps使用）</h4><p>参数：-l： 查看可发送的信号有哪些</p>
+<p><img src="/linux_command/64.png"></p>
+<h4 id="4、pidof-参数-服务名称-（查看进程pid值）"><a href="#4、pidof-参数-服务名称-（查看进程pid值）" class="headerlink" title="4、pidof [参数] [服务名称]（查看进程pid值）"></a>4、pidof [参数] [服务名称]（查看进程pid值）</h4><p><img src="/linux_command/65.png"></p>
+<h4 id="5、killall-参数-进程名称-（终止指定名称下的所有进程）"><a href="#5、killall-参数-进程名称-（终止指定名称下的所有进程）" class="headerlink" title="5、killall [参数] [进程名称]（终止指定名称下的所有进程）"></a>5、killall [参数] [进程名称]（终止指定名称下的所有进程）</h4><p><img src="/linux_command/66.png"></p>
+<p><img src="/linux_command/67.png"></p>
+<h4 id="6、top（监控进程状况）"><a href="#6、top（监控进程状况）" class="headerlink" title="6、top（监控进程状况）"></a>6、top（监控进程状况）</h4><p>监控进程状况（默认5秒刷新）也可用“top -d 20”改为每二十秒刷新一次</p>
+<p>shift+m对内存情况排序</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中查看系统信息和管理进程的常用命令。通过这些命令，你可以了解系统的硬件状态、内存使用情况、磁盘使用情况，以及管理系统中的进程。掌握这些命令对于系统监控和维护非常重要。在后续文章中，我们将继续介绍其他常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令5：其他常用命令篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A45%EF%BC%9A%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令5：其他常用命令篇"><a href="#Linux常用命令5：其他常用命令篇" class="headerlink" title="Linux常用命令5：其他常用命令篇"></a>Linux常用命令5：其他常用命令篇</h1><p>在Linux系统中，除了基础命令、文件操作和系统管理命令外，还有许多其他常用命令。本文将介绍这些实用的辅助命令，帮助你更高效地使用Linux系统。</p>
+<h2 id="八、其他常用命令"><a href="#八、其他常用命令" class="headerlink" title="八、其他常用命令"></a>八、其他常用命令</h2><h4 id="1、clear（清除终端内容（ctrl-L））"><a href="#1、clear（清除终端内容（ctrl-L））" class="headerlink" title="1、clear（清除终端内容（ctrl+L））"></a>1、clear（清除终端内容（ctrl+L））</h4><p><img src="/linux_command/68.png"></p>
+<h4 id="2、uname（显示系统信息）"><a href="#2、uname（显示系统信息）" class="headerlink" title="2、uname（显示系统信息）"></a>2、uname（显示系统信息）</h4><p><img src="/linux_command/69.png"></p>
+<p><img src="/linux_command/70.png"></p>
+<h4 id="3、man（列出命令帮助手册）"><a href="#3、man（列出命令帮助手册）" class="headerlink" title="3、man（列出命令帮助手册）"></a>3、man（列出命令帮助手册）</h4><p><img src="/linux_command/71.png"></p>
+<h4 id="4、shutdown-参数-时间-警告信息"><a href="#4、shutdown-参数-时间-警告信息" class="headerlink" title="*4、shutdown [参数] 时间 [警告信息]"></a>*4、shutdown [参数] 时间 [警告信息]</h4><p>参数：-r：重新启动</p>
+<p>-h：关闭系统</p>
+<p>时间参数：now：现在</p>
+<p>hh:mm：小时:分钟</p>
+<p>+m：m分钟后</p>
+<h4 id="5、halt（立即停止系统，需人工关闭电源）"><a href="#5、halt（立即停止系统，需人工关闭电源）" class="headerlink" title="5、halt（立即停止系统，需人工关闭电源）"></a>5、halt（立即停止系统，需人工关闭电源）</h4><h4 id="6、reboot（重启）"><a href="#6、reboot（重启）" class="headerlink" title="*6、reboot（重启）"></a>*6、reboot（重启）</h4><h4 id="7、poweroff（立即停止系统并关闭电源）"><a href="#7、poweroff（立即停止系统并关闭电源）" class="headerlink" title="*7、poweroff（立即停止系统并关闭电源）"></a>*7、poweroff（立即停止系统并关闭电源）</h4><h4 id="8、alias-命令别名-”命令行”（创建命令别名）"><a href="#8、alias-命令别名-”命令行”（创建命令别名）" class="headerlink" title="*8、alias 命令别名&#x3D;”命令行”（创建命令别名）"></a>*8、alias 命令别名&#x3D;”命令行”（创建命令别名）</h4><p><img src="/linux_command/72.png"></p>
+<h4 id="9、unalias-命令名（取消别名）"><a href="#9、unalias-命令名（取消别名）" class="headerlink" title="*9、unalias 命令名（取消别名）"></a>*9、unalias 命令名（取消别名）</h4><p><img src="/linux_command/73.png"></p>
+<h4 id="10、history（显示最近执行命令，在历史命令前加！可重新运行命令）"><a href="#10、history（显示最近执行命令，在历史命令前加！可重新运行命令）" class="headerlink" title="10、history（显示最近执行命令，在历史命令前加！可重新运行命令）"></a>10、history（显示最近执行命令，在历史命令前加！可重新运行命令）</h4><h4 id="11、who（查看当前登入主机的用户终端信息）"><a href="#11、who（查看当前登入主机的用户终端信息）" class="headerlink" title="11、who（查看当前登入主机的用户终端信息）"></a>11、who（查看当前登入主机的用户终端信息）</h4><p><img src="/linux_command/74.png"></p>
+<h4 id="12、wget-参数-下载地址（下载网络文件）"><a href="#12、wget-参数-下载地址（下载网络文件）" class="headerlink" title="12、wget [参数] 下载地址（下载网络文件）"></a>12、wget [参数] 下载地址（下载网络文件）</h4><p>参数：-c：断点续传</p>
+<p>-b：后台下载（tail -f wget-log查看进度）</p>
+<p>-p：下载至指定目录</p>
+<h4 id="13、last-参数-（查看所有系统的登录记录）"><a href="#13、last-参数-（查看所有系统的登录记录）" class="headerlink" title="13、last [参数]（查看所有系统的登录记录）"></a>13、last [参数]（查看所有系统的登录记录）</h4><h4 id="14、sosreport（收集系统配置及架构信息并输出判断文档）"><a href="#14、sosreport（收集系统配置及架构信息并输出判断文档）" class="headerlink" title="14、sosreport（收集系统配置及架构信息并输出判断文档）"></a>14、sosreport（收集系统配置及架构信息并输出判断文档）</h4><h4 id="15、echo-字符串-变量-（终端输出字符串或变量提取后的值）"><a href="#15、echo-字符串-变量-（终端输出字符串或变量提取后的值）" class="headerlink" title="*15、echo [字符串|$变量]（终端输出字符串或变量提取后的值）"></a>*15、echo [字符串|$变量]（终端输出字符串或变量提取后的值）</h4><p><img src="/linux_command/75.png"></p>
+<p>加$是提取后面字符的值</p>
+<p><img src="/linux_command/76.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中各种实用的辅助命令，包括终端操作、系统信息查看、命令帮助、系统关机重启、命令别名、历史命令、用户信息查看、网络下载等。这些命令虽然不如基础命令和系统管理命令常用，但在特定场景下非常实用。掌握这些命令可以帮助你更高效地使用Linux系统。在后续文章中，我们将继续介绍用户和群组管理的常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令6：用户和群组管理篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A46%EF%BC%9A%E7%94%A8%E6%88%B7%E5%92%8C%E7%BE%A4%E7%BB%84%E7%AE%A1%E7%90%86%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令6：用户和群组管理篇"><a href="#Linux常用命令6：用户和群组管理篇" class="headerlink" title="Linux常用命令6：用户和群组管理篇"></a>Linux常用命令6：用户和群组管理篇</h1><p>在Linux系统中，用户和群组管理是系统管理的重要组成部分。本文将介绍用户和群组的基本概念、相关配置文件以及管理命令，帮助你理解和管理Linux系统中的用户和群组。</p>
+<h1 id="九、理解用户账户和群组"><a href="#九、理解用户账户和群组" class="headerlink" title="九、理解用户账户和群组"></a>九、理解用户账户和群组</h1><h4 id="1、用户账户和群组"><a href="#1、用户账户和群组" class="headerlink" title="1、用户账户和群组"></a>1、用户账户和群组</h4><p>Linux是多用户多任务操作系统，允许多用户登录，用户账户是用户的身份标识。用户通过用户账户登陆系统，并访问被授权的资源。系统依据账户来区分属于自己的文件、进程、任务，并给每个用户提供特定环境，互相不受干扰。</p>
+<p>Linux用户账户分为两种：</p>
+<p>1、普通用户：只能普通工作访问拥有的或有权执行的文件。</p>
+<p>2、超级用户：管理员，对普通用户和系统进行管理。</p>
+<p>普通用户权限一般在HOME目录内不受限制，一旦出了HOME，大多数地方，只有只读和执行权限。</p>
+<p>群组是有相同特性的逻辑集合，在资源授权时可把权限赋予某个群组，成员自动获取权限。</p>
+<p>一个用户可以属于多个组，某个群组是主组群（私有），其他为附属群（标准）。</p>
+<h5 id="用户和群组的基本概念"><a href="#用户和群组的基本概念" class="headerlink" title="用户和群组的基本概念"></a>用户和群组的基本概念</h5><p><img src="/linux_command/77.png"></p>
+<p>注：root用户UID为0，系统用户为1~999，普通用户可以管理员指定，不指定默认从1000开始， Linux系统中，创建用户账户时也会创建一个与用户同名的组群，该组是用户的主组群。普通组群的GID默认也是从1 000开始编号。  </p>
+<h4 id="2、理解用户账户和群组文件"><a href="#2、理解用户账户和群组文件" class="headerlink" title="2、理解用户账户和群组文件"></a>2、理解用户账户和群组文件</h4><h5 id="1、用户账户文件（-etc-passwd）"><a href="#1、用户账户文件（-etc-passwd）" class="headerlink" title="*1、用户账户文件（&#x2F;etc&#x2F;passwd）"></a>*1、用户账户文件（&#x2F;etc&#x2F;passwd）</h5><p>创建的用户账户及其相关信息（密码除外）均放在该目录配置文件中。</p>
+<p><img src="/linux_command/78.png"></p>
+<h5 id="2、加密组文件（-etc-shadow）"><a href="#2、加密组文件（-etc-shadow）" class="headerlink" title="*2、加密组文件（&#x2F;etc&#x2F;shadow）"></a>*2、加密组文件（&#x2F;etc&#x2F;shadow）</h5><p>只对root用户可读</p>
+<p><img src="/linux_command/79.png"></p>
+<h5 id="3、群组文件（-etc-group）"><a href="#3、群组文件（-etc-group）" class="headerlink" title="*3、群组文件（&#x2F;etc&#x2F;group）"></a>*3、群组文件（&#x2F;etc&#x2F;group）</h5><p>用于存放组账户信息，任何用户都可读取，分为四个域。root的GID为0（无其他组成员），group文件的组成员列表中如果有多个用户账户属于同一个组，之间以“，”分隔。用户的主群组不会把用户列出，附属组才会。</p>
+<p><img src="/linux_command/80.png"></p>
+<h5 id="4、群组加密文件（-etc-gshadow）"><a href="#4、群组加密文件（-etc-gshadow）" class="headerlink" title="*4、群组加密文件（&#x2F;etc&#x2F;gshadow）"></a>*4、群组加密文件（&#x2F;etc&#x2F;gshadow）</h5><p>存放群组加密口令，组管理员等信息，只有root用户可读，分为四个域。</p>
+<p><img src="/linux_command/81.png"></p>
+<h4 id="3、管理用户账户"><a href="#3、管理用户账户" class="headerlink" title="3、管理用户账户"></a>3、管理用户账户</h4><h6 id="1、useradd-adduser-选项-用户名（新建用户）"><a href="#1、useradd-adduser-选项-用户名（新建用户）" class="headerlink" title="*1、useradd&#x2F;adduser [选项] 用户名（新建用户）"></a>*1、useradd&#x2F;adduser [选项] 用户名（新建用户）</h6><p><img src="/linux_command/82.png"></p>
+<p><img src="/linux_command/83.png"></p>
+<p><img src="/linux_command/84.png"></p>
+<h6 id="2、usermod-参数-组名-用户（将用户添加至组内或修改用户属性）"><a href="#2、usermod-参数-组名-用户（将用户添加至组内或修改用户属性）" class="headerlink" title="*2、usermod [参数] [组名] 用户（将用户添加至组内或修改用户属性）"></a>*2、usermod [参数] [组名] 用户（将用户添加至组内或修改用户属性）</h6><p>参数：</p>
+<p>-a：添加一个或多个组</p>
+<p>-G：变更用户扩展组（附属组）</p>
+<p><img src="/linux_command/85.png"></p>
+<p>修改用户属性</p>
+<p>-l是修改用户名</p>
+<p><img src="/linux_command/86.png"></p>
+<p><img src="/linux_command/87.png"></p>
+<h6 id="3、passwd-参数-用户名（指定和修改用户账户口令）"><a href="#3、passwd-参数-用户名（指定和修改用户账户口令）" class="headerlink" title="*3、passwd [参数] 用户名（指定和修改用户账户口令）"></a>*3、passwd [参数] 用户名（指定和修改用户账户口令）</h6><p><img src="/linux_command/88.png"></p>
+<h6 id="4、chage-参数-用户名（修改用户账户口令）"><a href="#4、chage-参数-用户名（修改用户账户口令）" class="headerlink" title="*4、chage [参数] 用户名（修改用户账户口令）"></a>*4、chage [参数] 用户名（修改用户账户口令）</h6><p><img src="/linux_command/89.png"></p>
+<p><img src="/linux_command/90.png"></p>
+<h4 id="4、禁用和恢复用户账户"><a href="#4、禁用和恢复用户账户" class="headerlink" title="4、禁用和恢复用户账户"></a>4、禁用和恢复用户账户</h4><h5 id="1、暂停禁用和恢复账户"><a href="#1、暂停禁用和恢复账户" class="headerlink" title="1、暂停禁用和恢复账户"></a>1、暂停禁用和恢复账户</h5><h6 id="1、passwd命令"><a href="#1、passwd命令" class="headerlink" title="*1、passwd命令"></a>*1、passwd命令</h6><p>passwd -l 用户名（锁定用户）</p>
+<p>passwd -u 用户名（解除锁定）</p>
+<p>passwd -d 用户名（清空密码）</p>
+<p><img src="/linux_command/91.png"><img src="/linux_command/92.png"></p>
+<h6 id="2、usermod命令"><a href="#2、usermod命令" class="headerlink" title="*2、usermod命令"></a>*2、usermod命令</h6><p>usermod -L 用户名（禁用）</p>
+<p>usermod -U 用户名（解除）</p>
+<p><img src="/linux_command/93.png"></p>
+<p><img src="/linux_command/94.png"></p>
+<h4 id="5、删除用户账户"><a href="#5、删除用户账户" class="headerlink" title="5、删除用户账户"></a>5、删除用户账户</h4><h6 id="1、直接删除"><a href="#1、直接删除" class="headerlink" title="1、直接删除"></a>1、直接删除</h6><p>删除&#x2F;etc&#x2F;passwd或&#x2F;etc&#x2F;shadow对应用户行</p>
+<h6 id="2、userdel-参数-用户名"><a href="#2、userdel-参数-用户名" class="headerlink" title="*2、userdel [参数] 用户名"></a>*2、userdel [参数] 用户名</h6><p>参数：-r：删除的同时，会将关于用户的文件和目录都删除（不加该参数只会删除信息）</p>
+<p><img src="/linux_command/95.png"></p>
+<h4 id="6、维护群组用户"><a href="#6、维护群组用户" class="headerlink" title="6、维护群组用户"></a>6、维护群组用户</h4><h6 id="1、groupadd-用户组名（创建群组）"><a href="#1、groupadd-用户组名（创建群组）" class="headerlink" title="*1、groupadd 用户组名（创建群组）"></a>*1、groupadd 用户组名（创建群组）</h6><p><img src="/linux_command/96.png"></p>
+<h6 id="2、groupdel-用户组名（删除群组）"><a href="#2、groupdel-用户组名（删除群组）" class="headerlink" title="*2、groupdel 用户组名（删除群组）"></a>*2、groupdel 用户组名（删除群组）</h6><p><img src="/linux_command/97.png"></p>
+<h6 id="3、groupmod-参数-组名（修改群组）"><a href="#3、groupmod-参数-组名（修改群组）" class="headerlink" title="*3、groupmod [参数] 组名（修改群组）"></a>*3、groupmod [参数] 组名（修改群组）</h6><p>参数：-g：修改GID</p>
+<p>-n：修改名称</p>
+<p><img src="/linux_command/98.png"></p>
+<h6 id="4、gpasswd-参数-用户-组（组增删用户）"><a href="#4、gpasswd-参数-用户-组（组增删用户）" class="headerlink" title="*4、gpasswd [参数] 用户 组（组增删用户）"></a>*4、gpasswd [参数] 用户 组（组增删用户）</h6><p><img src="/linux_command/99.png"></p>
+<p><img src="/linux_command/100.png"></p>
+<h6 id="5、su-sudo-参数-用户名-（切换用户）"><a href="#5、su-sudo-参数-用户名-（切换用户）" class="headerlink" title="5、su&#x2F;sudo [参数] [用户名]（切换用户）"></a>5、su&#x2F;sudo [参数] [用户名]（切换用户）</h6><p>退出使用exit或ctrl+d</p>
+<p>参数带-是切换目录</p>
+<h6 id="6、vipw（vi-etc-passwd）"><a href="#6、vipw（vi-etc-passwd）" class="headerlink" title="6、vipw（vi &#x2F;etc&#x2F;passwd）"></a>6、vipw（vi &#x2F;etc&#x2F;passwd）</h6><h6 id="7、vipr（vi-etc-group）"><a href="#7、vipr（vi-etc-group）" class="headerlink" title="7、vipr（vi &#x2F;etc&#x2F;group）"></a>7、vipr（vi &#x2F;etc&#x2F;group）</h6><h6 id="8、pwck（验证用户账户文件认证信息完整性）"><a href="#8、pwck（验证用户账户文件认证信息完整性）" class="headerlink" title="8、pwck（验证用户账户文件认证信息完整性）"></a>8、pwck（验证用户账户文件认证信息完整性）</h6><p>检测&#x2F;etc&#x2F;passwd和&#x2F;etc&#x2F;shadow字段格式是否正确</p>
+<h6 id="9、grpck（验证群组-）"><a href="#9、grpck（验证群组-）" class="headerlink" title="9、grpck（验证群组~）"></a>9、grpck（验证群组~）</h6><p>检测&#x2F;etc&#x2F;group和&#x2F;etc&#x2F;gshadow字段格式是否正确</p>
+<h6 id="10、id-用户名（显示用户uid和gid及所属组列表）"><a href="#10、id-用户名（显示用户uid和gid及所属组列表）" class="headerlink" title="*10、id 用户名（显示用户uid和gid及所属组列表）"></a>*10、id 用户名（显示用户uid和gid及所属组列表）</h6><p><img src="/linux_command/101.png"></p>
+<h6 id="11、finger、chfn、chsh（查看用户相关信息）"><a href="#11、finger、chfn、chsh（查看用户相关信息）" class="headerlink" title="11、finger、chfn、chsh（查看用户相关信息）"></a>11、finger、chfn、chsh（查看用户相关信息）</h6><p>finger包括主目录、启动shell、用户名、地址、电话等信息（需安装apt install finger）</p>
+<p>finger参数：</p>
+<p><img src="/linux_command/102.png"></p>
+<p>chfn可修改用户办公地址&#x2F;电话，住宅电话。</p>
+<p>chsh修改启动shell</p>
+<p>chsh参数：-s：修改启动shell路径</p>
+<h6 id="12、whoami（显示当前用户名称）"><a href="#12、whoami（显示当前用户名称）" class="headerlink" title="12、whoami（显示当前用户名称）"></a>12、whoami（显示当前用户名称）</h6><p>与id -un作用相同</p>
+<h6 id="13、newgrp（转换当前组到指定主群组）"><a href="#13、newgrp（转换当前组到指定主群组）" class="headerlink" title="13、newgrp（转换当前组到指定主群组）"></a>13、newgrp（转换当前组到指定主群组）</h6><p>没设置群组口令的群组，只有成员可使用newgrp改变主群组身份到该群组，设置了，其他群组只要拥有口令既可改变。</p>
+<h6 id="14、ln-参数-源文件-目标文件-（建立链接）"><a href="#14、ln-参数-源文件-目标文件-（建立链接）" class="headerlink" title="*14、ln [参数] [源文件] [目标文件]（建立链接）"></a>*14、ln [参数] [源文件] [目标文件]（建立链接）</h6><p>参数：</p>
+<p>-s：软链接，不加就是硬链接。</p>
+<p>-f：强制。如果目标文件已存在，会删除目标文件后再建立链接文件。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中用户和群组管理的相关知识和常用命令。包括用户和群组的基本概念、相关配置文件，以及用户账户的创建、修改、禁用、恢复和删除，群组的创建、修改和删除等操作。掌握这些命令对于系统管理和用户权限控制非常重要。在后续文章中，我们将继续介绍文件系统和权限管理的常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令8：网络命令篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A48%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令8：网络命令篇"><a href="#Linux常用命令8：网络命令篇" class="headerlink" title="Linux常用命令8：网络命令篇"></a>Linux常用命令8：网络命令篇</h1><p>在Linux系统中，网络命令是配置和诊断网络连接的重要工具。本文将介绍常用的网络命令，帮助你管理和调试Linux系统的网络连接。</p>
+<h1 id="十一、常用网络命令"><a href="#十一、常用网络命令" class="headerlink" title="十一、常用网络命令"></a>十一、常用网络命令</h1><h4 id="1、ping-参数-目标主机或ip"><a href="#1、ping-参数-目标主机或ip" class="headerlink" title="1、ping [参数] 目标主机或ip"></a>1、ping [参数] 目标主机或ip</h4><p><img src="/linux_command/109.png"></p>
+<p><img src="/linux_command/110.png"></p>
+<h4 id="2、traceroute-参数-目标主机或ip（查看经过路径）"><a href="#2、traceroute-参数-目标主机或ip（查看经过路径）" class="headerlink" title="2、traceroute [参数] 目标主机或ip（查看经过路径）"></a>2、traceroute [参数] 目标主机或ip（查看经过路径）</h4><p><img src="/linux_command/111.png"></p>
+<p><img src="/linux_command/112.png"></p>
+<h4 id="3、netstat-参数-（查看网络连接、路由表信息和网络接口状态信息）"><a href="#3、netstat-参数-（查看网络连接、路由表信息和网络接口状态信息）" class="headerlink" title="3、netstat [参数]（查看网络连接、路由表信息和网络接口状态信息）"></a>3、netstat [参数]（查看网络连接、路由表信息和网络接口状态信息）</h4><p><img src="/linux_command/113.png"></p>
+<p><img src="/linux_command/114.png"></p>
+<h4 id="4、ifconfig-网络接口设备名-（查看网络设备tcp-ip参数）"><a href="#4、ifconfig-网络接口设备名-（查看网络设备tcp-ip参数）" class="headerlink" title="4、ifconfig [网络接口设备名]（查看网络设备tcp&#x2F;ip参数）"></a>4、ifconfig [网络接口设备名]（查看网络设备tcp&#x2F;ip参数）</h4><p><img src="/linux_command/115.png"></p>
+<h4 id="5、ip-参数-（查看网络接口信息ip）"><a href="#5、ip-参数-（查看网络接口信息ip）" class="headerlink" title="5、ip [参数]（查看网络接口信息ip）"></a>5、ip [参数]（查看网络接口信息ip）</h4><p>ip address show–获取网卡配置与网络状态等信息<img src="/linux_command/116.png"></p>
+<p><img src="/linux_command/117.png"></p>
+<h4 id="6、-etc-resolv-conf（查看dns服务器地址）"><a href="#6、-etc-resolv-conf（查看dns服务器地址）" class="headerlink" title="6、&#x2F;etc&#x2F;resolv.conf（查看dns服务器地址）"></a>6、&#x2F;etc&#x2F;resolv.conf（查看dns服务器地址）</h4><p><img src="/linux_command/118.png"></p>
+<h4 id="7、ip-route-list（查看路由表信息）"><a href="#7、ip-route-list（查看路由表信息）" class="headerlink" title="7、ip route list（查看路由表信息）"></a>7、ip route list（查看路由表信息）</h4><p><img src="/linux_command/119.png"></p>
+<h4 id="8、hostname（当前系统主机名）"><a href="#8、hostname（当前系统主机名）" class="headerlink" title="8、hostname（当前系统主机名）"></a>8、hostname（当前系统主机名）</h4><p>后面加上ctl显示更详细信息</p>
+<p><img src="/linux_command/120.png"></p>
+<h4 id="9、nmtui（图形界面配置网络）"><a href="#9、nmtui（图形界面配置网络）" class="headerlink" title="9、nmtui（图形界面配置网络）"></a>9、nmtui（图形界面配置网络）</h4><h4 id="10、nmcli（命令配置网络）"><a href="#10、nmcli（命令配置网络）" class="headerlink" title="10、nmcli（命令配置网络）"></a>10、nmcli（命令配置网络）</h4><p><img src="/linux_command/121.png"></p>
+<p>参数：</p>
+<p><img src="/linux_command/122.png"></p>
+<p>练习：</p>
+<p><img src="/linux_command/123.png"></p>
+<p><img src="/linux_command/124.png"></p>
+<p><img src="/linux_command/125.png"></p>
+<h4 id="11、network（网络服务设置）"><a href="#11、network（网络服务设置）" class="headerlink" title="11、network（网络服务设置）"></a>11、network（网络服务设置）</h4><p><img src="/linux_command/126.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中常用的网络命令，包括网络诊断工具（ping、traceroute）、网络状态查看工具（netstat、ifconfig、ip）、DNS配置查看（&#x2F;etc&#x2F;resolv.conf）、路由表查看（ip route list）、主机名管理（hostname）以及网络配置工具（nmtui、nmcli）等。这些命令对于网络故障诊断、网络配置和网络状态监控非常重要。掌握这些命令可以帮助你更好地管理和维护Linux系统的网络连接。在后续文章中，我们将介绍vim编辑器和shell脚本的常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令7：文件系统和权限篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A47%EF%BC%9A%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%9D%83%E9%99%90%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令7：文件系统和权限篇"><a href="#Linux常用命令7：文件系统和权限篇" class="headerlink" title="Linux常用命令7：文件系统和权限篇"></a>Linux常用命令7：文件系统和权限篇</h1><p>在Linux系统中，文件系统和权限管理是确保系统安全和数据完整性的重要组成部分。本文将介绍Linux文件系统的基本概念、文件权限的理解和管理，以及相关的常用命令。</p>
+<h1 id="十、文件系统与目录"><a href="#十、文件系统与目录" class="headerlink" title="十、文件系统与目录"></a>十、文件系统与目录</h1><h3 id="1-文件系统与目录"><a href="#1-文件系统与目录" class="headerlink" title="1.文件系统与目录"></a>1.文件系统与目录</h3><h3 id="2-管理linux文件权限"><a href="#2-管理linux文件权限" class="headerlink" title="*2.管理linux文件权限"></a>*2.管理linux文件权限</h3><h4 id="1-理解文件和文件权限"><a href="#1-理解文件和文件权限" class="headerlink" title="1.理解文件和文件权限"></a>1.理解文件和文件权限</h4><p>文件是操作系统用来存储信息的基本结构，是一组信息的集合。文件通过文件名来唯一地标识。Linux中的文件名称最长可允许255个字符，这些字符可用A<del>Z、0</del>9、.、-等符号来表示，并且Linux文件名区分大小写。</p>
+<p>在Linux中的每一个文件或目录都包含有访问权限，这些访问权限决定了谁能访问和如何访问这些文件和目录。通过设定权限可以从以下3种访问方式限制访问权限。</p>
+<pre><code>        + 只允许用户自己访问。
+        + 允许一个预先指定的用户组中的用户访问。
+        + 允许系统中的任何用户访问。
+        + 所有者:第一套权限控制访问自己的文件权限，即所有者权限。
+        + 用户组:第二套权限控制用户组访问其中一个用户的文件的权限。
+        + 其他用户:第三套权限控制其他所有用户访问一个用户的文件的权限。
+</code></pre>
+<p><img src="/linux_command/103.png"></p>
+<p>我们可以用ls -l或ll命令显示文件详细信息，包括权限。</p>
+<p><img src="/linux_command/104.png"></p>
+<h4 id="2-文件各种属性"><a href="#2-文件各种属性" class="headerlink" title="2.文件各种属性"></a>2.文件各种属性</h4><p><img src="/linux_command/105.png"></p>
+<p>第一行为文件类型：</p>
+<p>-：普通文件</p>
+<p>d：目录</p>
+<p>l：符号链接文件，指向另一个文件</p>
+<p>b：块设备文件</p>
+<p>c：字符设备文件</p>
+<p>p：管道文件，用于在进程间传递数据</p>
+<p>s：套接字文件，用于不同计算机间网络通信</p>
+<p>这9个字符根据权限种类不同，也分为3种类型。</p>
+<p>r：读取（文件），浏览文件目录（目录）去掉不能看目录下文件</p>
+<p>w：写入（文件），增删文件（目录）</p>
+<p>x：执行（文件），不能进入目录（目录）不能进入目录</p>
+<p>-：不具有该权限</p>
+<p><img src="/linux_command/106.png"></p>
+<h3 id="3-常用命令"><a href="#3-常用命令" class="headerlink" title="*3.常用命令"></a>*3.常用命令</h3><h4 id="1-chmod-R-权限-文件或文件夹（修改文件或文件夹权限）"><a href="#1-chmod-R-权限-文件或文件夹（修改文件或文件夹权限）" class="headerlink" title="1.chmod [-R] 权限 文件或文件夹（修改文件或文件夹权限）"></a>1.chmod [-R] 权限 文件或文件夹（修改文件或文件夹权限）</h4><h5 id="数字表示法"><a href="#数字表示法" class="headerlink" title="数字表示法"></a>数字表示法</h5><p>参数：</p>
+<p>-R：对文件夹内的全部内容应用同样的操作</p>
+<p><img src="/linux_command/107.png"></p>
+<h5 id="文字表示法"><a href="#文字表示法" class="headerlink" title="文字表示法"></a>文字表示法</h5><pre><code>        + u：user，表示所有者。
+        + g：group，表示所属组。
+        + o：others，表示其他用户。
+        + a：all，表示以上3种用户。
+</code></pre>
+<h5 id="使用下面3种字符组合设置操作权限"><a href="#使用下面3种字符组合设置操作权限" class="headerlink" title="使用下面3种字符组合设置操作权限"></a>使用下面3种字符组合设置操作权限</h5><p>+：添加权限。</p>
+<p>-：去除权限。</p>
+<p>&#x3D;：赋予给定权限并取消原来的权限。</p>
+<h4 id="2-chown-R-用户-用户组-文件或文件夹（修改文件或文件夹的所属用户或组）"><a href="#2-chown-R-用户-用户组-文件或文件夹（修改文件或文件夹的所属用户或组）" class="headerlink" title="2.chown [-R] [用户]:[用户组] 文件或文件夹（修改文件或文件夹的所属用户或组）"></a>2.chown [-R] [用户]:[用户组] 文件或文件夹（修改文件或文件夹的所属用户或组）</h4><p>参数：</p>
+<p>-R：和chmod一样</p>
+<h4 id="3-umask（文件预设权限）"><a href="#3-umask（文件预设权限）" class="headerlink" title="3.umask（文件预设权限）"></a>3.umask（文件预设权限）</h4><h5 id="1、查阅权限方式有两种"><a href="#1、查阅权限方式有两种" class="headerlink" title="1、查阅权限方式有两种"></a>1、查阅权限方式有两种</h5><p>直接输入umask（数字展示）：0022</p>
+<p>加入-S（符号显示）：u&#x3D;rwx,g&#x3D;rx,o&#x3D;rx</p>
+<h5 id="2、预设权限："><a href="#2、预设权限：" class="headerlink" title="2、预设权限："></a>2、预设权限：</h5><p>使用者建立文件：则预设没有可执行(x)权限，即只有rw这两个项目，也就是最大为666，预设权限为:-rw-rw-rw-。</p>
+<p>用户建立目录：则由于x与是否可以进入此目录有关，因此默认所有权限均开放，即为777，预设权限为:drwxrwxrwx。</p>
+<p>umask分值指的是该默认值需要减掉的权限。（预设权限（文件默认666，目录777）-022）（<font style="color:rgb(51, 51, 51);">目录（文件）的初始权限 &#x3D; 目录（文件）的最大默认权限 - umask权限</font>）</p>
+<h5 id="3、setuid、setgid、stickybit（出现位置位权限位x）"><a href="#3、setuid、setgid、stickybit（出现位置位权限位x）" class="headerlink" title="3、setuid、setgid、stickybit（出现位置位权限位x）"></a>3、setuid、setgid、stickybit（出现位置位权限位x）</h5><p>对应的是4、2、1</p>
+<p>设定setuid：</p>
+<p>chmod 4755 文件名</p>
+<p>chmod u+s 文件名</p>
+<p>取消就是减去s</p>
+<p><img src="/linux_command/108.png"></p>
+<p>设定setgid：</p>
+<p>chmod 2755 文件名</p>
+<p>chmod g+s 文件名</p>
+<p>取消就是减去s</p>
+<p>设定stickybit：</p>
+<p>chmod 1755 文件名</p>
+<p>chmod o+t 文件名</p>
+<p>取消就是减去t</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中文件系统和权限管理的相关知识和常用命令。包括文件系统的基本概念、文件权限的理解、文件属性的解读，以及修改文件权限的chmod命令、修改文件所有者和所属组的chown命令、文件预设权限的umask命令，还有特殊权限setuid、setgid和stickybit的设置方法。掌握这些命令对于系统安全管理和权限控制非常重要。在后续文章中，我们将继续介绍常用网络命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx</title>
+    <url>/2025/11/19/nginx/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="nginx发布网页"><a href="#nginx发布网页" class="headerlink" title="nginx发布网页"></a>nginx发布网页</h1><p>nginx是什么？</p>
+<p>nginx是一个高性能的http和反向代理web服务器，特点：内存占用少，并发能力强，热部署。</p>
+<h2 id="Windows部署"><a href="#Windows部署" class="headerlink" title="Windows部署"></a>Windows部署</h2><p>常用命令：（1）启动：start nginx（2）停止：nginx -s stop（3）重启：nginx -s reload</p>
+<p>注意：在修改配置文件时，需在con\nginx.conf下的location的root中修改文件路径，*文件路径不是\应该是&#x2F;</p>
+<p><img src="/nginx/1.png" alt="nginx配置文件"><br><img src="/nginx/2.png" alt="nginx配置文件"><br><img src="/nginx/3.png" alt="nginx配置文件"></p>
+<h2 id="Ubuntu部署"><a href="#Ubuntu部署" class="headerlink" title="Ubuntu部署"></a>Ubuntu部署</h2><p>安装vim、nginx</p>
+<p>之后将发布网站的文件用mv移动到nginx所在文件位置下（&#x2F;etc&#x2F;nginx）</p>
+<p>修改配置文件（vim &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;default）和Windows一样</p>
+<p>之后在终端停止并启动nginx（systemctl stop&#x2F;start nginx）</p>
+]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令9：编辑器和脚本篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A49%EF%BC%9A%E7%BC%96%E8%BE%91%E5%99%A8%E5%92%8C%E8%84%9A%E6%9C%AC%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令9：编辑器和脚本篇"><a href="#Linux常用命令9：编辑器和脚本篇" class="headerlink" title="Linux常用命令9：编辑器和脚本篇"></a>Linux常用命令9：编辑器和脚本篇</h1><p>在Linux系统中，vim编辑器是最常用的文本编辑器之一，而shell脚本则是自动化任务的重要工具。本文将介绍vim编辑器的基本使用和shell脚本的编写，帮助你提高Linux系统的使用效率。</p>
+<h1 id="十二、vim编辑器"><a href="#十二、vim编辑器" class="headerlink" title="十二、vim编辑器"></a>十二、vim编辑器</h1><h4 id="1、下载vim编辑器"><a href="#1、下载vim编辑器" class="headerlink" title="1、下载vim编辑器"></a>1、下载vim编辑器</h4><p>在Ubuntu中有的电脑会无下载vim编辑器，此时要下载vim编辑器，需用命令（apt install vim），如提示dpkg锁，则需删除这三个文件（&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock、&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock-frontend、&#x2F;var&#x2F;cache&#x2F;apt&#x2F;archives&#x2F;lock）即可</p>
+<h4 id="2、启动和退出vim和vim基本操作"><a href="#2、启动和退出vim和vim基本操作" class="headerlink" title="2、启动和退出vim和vim基本操作"></a>2、启动和退出vim和vim基本操作</h4><h5 id="1、vim-想编辑或建立的文件名（进入）"><a href="#1、vim-想编辑或建立的文件名（进入）" class="headerlink" title="1、vim 想编辑或建立的文件名（进入）"></a>1、vim 想编辑或建立的文件名（进入）</h5><p>vim编辑器分三种模式（命令模式，输入模式，底线模式）</p>
+<p><img src="/linux_command/127.png"></p>
+<h5 id="2、退出vim编辑器"><a href="#2、退出vim编辑器" class="headerlink" title="2、退出vim编辑器"></a>2、退出vim编辑器</h5><p>编辑模式退出</p>
+<p><img src="/linux_command/128.png"></p>
+<h5 id="3、命令模式（进入文件默认）"><a href="#3、命令模式（进入文件默认）" class="headerlink" title="3、命令模式（进入文件默认）"></a>3、命令模式（进入文件默认）</h5><p>操作分为：移动、查找与替换、删除、复制、粘贴。</p>
+<p><img src="/linux_command/129.png"></p>
+<p><img src="/linux_command/130.png"></p>
+<p><img src="/linux_command/131.png"></p>
+<p><img src="/linux_command/132.png"></p>
+<p><img src="/linux_command/133.png"></p>
+<h5 id="4、插入模式：（输入内容）"><a href="#4、插入模式：（输入内容）" class="headerlink" title="4、插入模式：（输入内容）"></a>4、插入模式：（输入内容）</h5><p><img src="/linux_command/134.png"></p>
+<h5 id="5、底线命令模式：（：就是进入底线命令模式）"><a href="#5、底线命令模式：（：就是进入底线命令模式）" class="headerlink" title="5、底线命令模式：（：就是进入底线命令模式）"></a>5、底线命令模式：（：就是进入底线命令模式）</h5><p><img src="/linux_command/135.png"></p>
+<h1 id="十三、学习shell-script"><a href="#十三、学习shell-script" class="headerlink" title="十三、学习shell script"></a>十三、学习shell script</h1><h3 id="1、编写与执行一个shell-script（-sh文件结尾）"><a href="#1、编写与执行一个shell-script（-sh文件结尾）" class="headerlink" title="1、编写与执行一个shell script（.sh文件结尾）"></a>1、编写与执行一个shell script（.sh文件结尾）</h3><p>创建和执行一个shell程序非常简单，一般需要一下步骤：</p>
+<p>1、vim创建脚本内容。</p>
+<p>2、使用chmod设置脚本的可执行属性。</p>
+<p>3、执行脚本</p>
+<h3 id="2、创建shell程序"><a href="#2、创建shell程序" class="headerlink" title="2、创建shell程序"></a>2、创建shell程序</h3><p>创建多用户程序</p>
+<p><img src="/linux_command/136.png"></p>
+<p>vim创建好shell程序后，设置可执行属性（chmod a+x address.sh），执行shell（.&#x2F; address.sh user 3）</p>
+<h3 id="3、shell编写规范"><a href="#3、shell编写规范" class="headerlink" title="3、shell编写规范"></a>3、shell编写规范</h3><p><img src="/linux_command/137.png"></p>
+<h3 id="4、shell案例程序"><a href="#4、shell案例程序" class="headerlink" title="4、shell案例程序"></a>4、shell案例程序</h3><p>待定</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中vim编辑器和shell脚本的相关知识。包括vim编辑器的下载、启动和退出、三种基本操作模式（命令模式、输入模式、底线命令模式），以及shell脚本的编写、执行和编写规范。掌握vim编辑器和shell脚本对于提高Linux系统的使用效率和自动化任务非常重要。通过本系列文章，我们已经介绍了Linux系统中从基础命令到高级应用的常用命令，希望这些内容能够帮助你更好地理解和使用Linux系统。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh</title>
+    <url>/2025/11/24/ssh/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="ssh步骤"><a href="#ssh步骤" class="headerlink" title="ssh步骤"></a>ssh步骤</h1><p>先装好ubuntu或安装基于linux内核而衍生出来的系统</p>
+<h2 id="确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）"><a href="#确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）" class="headerlink" title="确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）"></a>确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）</h2><p>在命令终端输入service sshd status（sudo service sshd status）或systemctl status sshd（sudo systemctl status ssh）查看是否启动了ssh服务，当出现active（running）时，则启动。</p>
+<p><img src="/ssh/1.png"></p>
+<p><img src="/ssh/2.png"></p>
+<p><img src="/ssh/3.png"></p>
+<p>更新软件仓库（apt-get update），完成后，使用apt-get install openssh-server安装openssh服务，若ssh服务已安装，但未启动，使用systemectl start sshd（service sshd start）启动，启动后进行后续操作。</p>
+<p><img src="/ssh/4.png"></p>
+<p><img src="/ssh/5.png"></p>
+<h2 id="查看ip地址"><a href="#查看ip地址" class="headerlink" title="查看ip地址"></a>查看ip地址</h2><p>ifconfig，ufw status（查看防火墙状态），ufw disabled（禁用防火墙），ufw enabled（启动防火墙）。</p>
+<p><img src="/ssh/6.png"></p>
+<p>在本地使用ssh命令连接服务器，在本地命令行输入ssh [用户名]@[ip地址]</p>
+<p><img src="/ssh/7.png"></p>
+<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><p>scp [选项] [源文件&#x2F;目录] [用户名]@[目标地址]:[目标路径]</p>
+<p>示例：scp -r C:\Users\HP\Desktop\sample.txt <a href="mailto:&#x75;&#x62;&#117;&#110;&#x74;&#117;&#64;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#56;&#x2e;&#x32;&#51;&#x30;&#46;&#x31;&#x32;&#56;">&#x75;&#x62;&#117;&#110;&#x74;&#117;&#64;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#56;&#x2e;&#x32;&#51;&#x30;&#46;&#x31;&#x32;&#56;</a>:&#x2F;home&#x2F;ubuntu</p>
+<p><img src="/ssh/8.png"></p>
+]]></content>
+      <categories>
+        <category>ssh</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的第一个博客</title>
     <url>/2025/11/17/hello-blog/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>欢迎各位来到我的博客，这是我的第一个博客。</p>
@@ -76,54 +602,6 @@
         <tag>Linux</tag>
         <tag>Kali</tag>
         <tag>输入法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx</title>
-    <url>/2025/11/19/nginx/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="nginx发布网页"><a href="#nginx发布网页" class="headerlink" title="nginx发布网页"></a>nginx发布网页</h1><p>nginx是什么？</p>
-<p>nginx是一个高性能的http和反向代理web服务器，特点：内存占用少，并发能力强，热部署。</p>
-<h2 id="Windows部署"><a href="#Windows部署" class="headerlink" title="Windows部署"></a>Windows部署</h2><p>常用命令：（1）启动：start nginx（2）停止：nginx -s stop（3）重启：nginx -s reload</p>
-<p>注意：在修改配置文件时，需在con\nginx.conf下的location的root中修改文件路径，*文件路径不是\应该是&#x2F;</p>
-<p><img src="/nginx/1.png" alt="nginx配置文件"><br><img src="/nginx/2.png" alt="nginx配置文件"><br><img src="/nginx/3.png" alt="nginx配置文件"></p>
-<h2 id="Ubuntu部署"><a href="#Ubuntu部署" class="headerlink" title="Ubuntu部署"></a>Ubuntu部署</h2><p>安装vim、nginx</p>
-<p>之后将发布网站的文件用mv移动到nginx所在文件位置下（&#x2F;etc&#x2F;nginx）</p>
-<p>修改配置文件（vim &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;default）和Windows一样</p>
-<p>之后在终端停止并启动nginx（systemctl stop&#x2F;start nginx）</p>
-]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ssh</title>
-    <url>/2025/11/24/ssh/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="ssh步骤"><a href="#ssh步骤" class="headerlink" title="ssh步骤"></a>ssh步骤</h1><p>先装好ubuntu或安装基于linux内核而衍生出来的系统</p>
-<h2 id="确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）"><a href="#确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）" class="headerlink" title="确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）"></a>确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）</h2><p>在命令终端输入service sshd status（sudo service sshd status）或systemctl status sshd（sudo systemctl status ssh）查看是否启动了ssh服务，当出现active（running）时，则启动。</p>
-<p><img src="/ssh/1.png"></p>
-<p><img src="/ssh/2.png"></p>
-<p><img src="/ssh/3.png"></p>
-<p>更新软件仓库（apt-get update），完成后，使用apt-get install openssh-server安装openssh服务，若ssh服务已安装，但未启动，使用systemectl start sshd（service sshd start）启动，启动后进行后续操作。</p>
-<p><img src="/ssh/4.png"></p>
-<p><img src="/ssh/5.png"></p>
-<h2 id="查看ip地址"><a href="#查看ip地址" class="headerlink" title="查看ip地址"></a>查看ip地址</h2><p>ifconfig，ufw status（查看防火墙状态），ufw disabled（禁用防火墙），ufw enabled（启动防火墙）。</p>
-<p><img src="/ssh/6.png"></p>
-<p>在本地使用ssh命令连接服务器，在本地命令行输入ssh [用户名]@[ip地址]</p>
-<p><img src="/ssh/7.png"></p>
-<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><p>scp [选项] [源文件&#x2F;目录] [用户名]@[目标地址]:[目标路径]</p>
-<p>示例：scp -r C:\Users\HP\Desktop\sample.txt <a href="mailto:&#x75;&#98;&#x75;&#x6e;&#116;&#117;&#64;&#x31;&#x39;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#50;&#x33;&#x30;&#x2e;&#49;&#x32;&#56;">&#x75;&#98;&#x75;&#x6e;&#116;&#117;&#64;&#x31;&#x39;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#50;&#x33;&#x30;&#x2e;&#49;&#x32;&#56;</a>:&#x2F;home&#x2F;ubuntu</p>
-<p><img src="/ssh/8.png"></p>
-]]></content>
-      <categories>
-        <category>ssh</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ssh</tag>
       </tags>
   </entry>
 </search>
