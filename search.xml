@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux常用命令1：基础命令篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A41%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在Linux系统中，基础命令是我们日常操作的基石。本文将介绍浏览目录和浏览文件的常用命令，帮助你快速掌握Linux的基本操作。</p>
+<h2 id="一、浏览目录类命令"><a href="#一、浏览目录类命令" class="headerlink" title="一、浏览目录类命令"></a>一、浏览目录类命令</h2><h4 id="1、pwd（列出当前所在位置）"><a href="#1、pwd（列出当前所在位置）" class="headerlink" title="*1、pwd（列出当前所在位置）"></a>*1、pwd（列出当前所在位置）</h4><p><img src="/linux_command/1.png"></p>
+<h4 id="2、cd-Linux路径"><a href="#2、cd-Linux路径" class="headerlink" title="*2、cd [Linux路径]"></a>*2、cd [Linux路径]</h4><p>进入到文件位置，特殊格式（.代表当前目录，..是上一级目录，~是回到主目录）</p>
+<p><img src="/linux_command/2.png"></p>
+<p><img src="/linux_command/3.png"></p>
+<h4 id="3、ls-参数-目录或文件"><a href="#3、ls-参数-目录或文件" class="headerlink" title="*3、ls [参数] [目录或文件]"></a>*3、ls [参数] [目录或文件]</h4><p>参数：**-a（显示所有文件，包括隐藏文件&#x2F;夹）<strong>，-A（显示指定目录下所有的子目录及文件，包括隐藏文件。但不显示“.”和“..”），-c（按文件修改时间排序），-C（分成多列显示各行），</strong>-l（以列表形式展示内容及更多信息）<strong>，</strong>-d（如果参数是目录，则显示其名称而不显示其下的各个文件。与“-l”一起使用，得到目录的详细信息）*<em>，-i（在无参的基础上多了个节点号），-F（列出当前目录下的文件名及其类型。以&#x2F;结尾表示为目录名，以</em>结尾表示为可执行文件，以@结尾表示为符号连接），-h（文件大小简化了，必须与-l一起使用）</p>
+<p><img src="/linux_command/4.png"></p>
+<p><img src="/linux_command/5.png"></p>
+<p><img src="/linux_command/6.png"></p>
+<p><img src="/linux_command/7.png"></p>
+<p><img src="/linux_command/8.png"></p>
+<p>写法：[ls -l -a ] [ls -la] [ls -al]上述三种写法，都是一样的</p>
+<h2 id="二、浏览文件类命令"><a href="#二、浏览文件类命令" class="headerlink" title="二、浏览文件类命令"></a>二、浏览文件类命令</h2><h4 id="1、cat-参数-文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）"><a href="#1、cat-参数-文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）" class="headerlink" title="*1、cat [参数] 文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）"></a>*1、cat [参数] 文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）</h4><p>参数：-b（对输出内容中非空行标注行号），-n（对所有行标注）</p>
+<p><img src="/linux_command/9.png"></p>
+<p><img src="/linux_command/10.png"></p>
+<p>利用cat命令还可以<strong>合并</strong>多个文件。例如，要把file1和file2文件的内容合并为file3，且file2文件的内容在file1文件的内容前面，则命令为</p>
+<p><img src="/linux_command/11.png"></p>
+<h4 id="2、more-参数-文件名（可一页一页地分屏显示文件内容）"><a href="#2、more-参数-文件名（可一页一页地分屏显示文件内容）" class="headerlink" title="2、more [参数] 文件名（可一页一页地分屏显示文件内容）"></a>2、more [参数] 文件名（可一页一页地分屏显示文件内容）</h4><p>进入more状态后，按enter向下一行，空格是下一页，Q是退出</p>
+<p>参数：-数字（每页行数），+数字（从文件第几行开始显示）</p>
+<p><img src="/linux_command/12.png"></p>
+<h4 id="3、less（比more命令的功能强大）"><a href="#3、less（比more命令的功能强大）" class="headerlink" title="3、less（比more命令的功能强大）"></a>3、less（比more命令的功能强大）</h4><p>进入less状态后，enter下一行，空格下一页，B上一页，方向键可以移动，Q退出，查找文本时使用&#x2F;+查找内容回车即可，继续查找按&#x2F;+回车</p>
+<p>参数：-数字（每页行数），+数字（从文件第几行开始显示）</p>
+<p><img src="/linux_command/13.png"></p>
+<h4 id="4、head-参数-文件名"><a href="#4、head-参数-文件名" class="headerlink" title="*4、head [参数] 文件名"></a>*4、head [参数] 文件名</h4><p>参数：-n 数字（显示前多少行），-c 数字（显示前多少字符）</p>
+<p><img src="/linux_command/14.png"></p>
+<h4 id="5、tail-参数-文件名（查看文件内容，也可以查看系统用户有哪些）"><a href="#5、tail-参数-文件名（查看文件内容，也可以查看系统用户有哪些）" class="headerlink" title="*5、tail [参数] 文件名（查看文件内容，也可以查看系统用户有哪些）"></a>*5、tail [参数] 文件名（查看文件内容，也可以查看系统用户有哪些）</h4><p>参数：-n 数字（显示末尾多少行），-c 数字（显示末尾多少字符），-f 文件名（刷新）</p>
+<p><img src="/linux_command/15.png"></p>
+<p><img src="/linux_command/16.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中最基础的命令，包括浏览目录和浏览文件的常用命令。这些命令是Linux操作的基础，掌握它们可以帮助你快速熟悉Linux系统的文件结构和内容查看方式。在后续文章中，我们将继续介绍更多Linux常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux常用命令2：文件和目录操作篇</title>
     <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A42%EF%BC%9A%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E7%AF%87/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令2：文件和目录操作篇"><a href="#Linux常用命令2：文件和目录操作篇" class="headerlink" title="Linux常用命令2：文件和目录操作篇"></a>Linux常用命令2：文件和目录操作篇</h1><p>在Linux系统中，文件和目录的操作是日常工作的重要组成部分。本文将介绍目录操作和文件操作的常用命令，帮助你高效管理Linux系统中的文件和目录。</p>
@@ -95,47 +136,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux常用命令1：基础命令篇</title>
-    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A41%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在Linux系统中，基础命令是我们日常操作的基石。本文将介绍浏览目录和浏览文件的常用命令，帮助你快速掌握Linux的基本操作。</p>
-<h2 id="一、浏览目录类命令"><a href="#一、浏览目录类命令" class="headerlink" title="一、浏览目录类命令"></a>一、浏览目录类命令</h2><h4 id="1、pwd（列出当前所在位置）"><a href="#1、pwd（列出当前所在位置）" class="headerlink" title="*1、pwd（列出当前所在位置）"></a>*1、pwd（列出当前所在位置）</h4><p><img src="/linux_command/1.png"></p>
-<h4 id="2、cd-Linux路径"><a href="#2、cd-Linux路径" class="headerlink" title="*2、cd [Linux路径]"></a>*2、cd [Linux路径]</h4><p>进入到文件位置，特殊格式（.代表当前目录，..是上一级目录，~是回到主目录）</p>
-<p><img src="/linux_command/2.png"></p>
-<p><img src="/linux_command/3.png"></p>
-<h4 id="3、ls-参数-目录或文件"><a href="#3、ls-参数-目录或文件" class="headerlink" title="*3、ls [参数] [目录或文件]"></a>*3、ls [参数] [目录或文件]</h4><p>参数：**-a（显示所有文件，包括隐藏文件&#x2F;夹）<strong>，-A（显示指定目录下所有的子目录及文件，包括隐藏文件。但不显示“.”和“..”），-c（按文件修改时间排序），-C（分成多列显示各行），</strong>-l（以列表形式展示内容及更多信息）<strong>，</strong>-d（如果参数是目录，则显示其名称而不显示其下的各个文件。与“-l”一起使用，得到目录的详细信息）*<em>，-i（在无参的基础上多了个节点号），-F（列出当前目录下的文件名及其类型。以&#x2F;结尾表示为目录名，以</em>结尾表示为可执行文件，以@结尾表示为符号连接），-h（文件大小简化了，必须与-l一起使用）</p>
-<p><img src="/linux_command/4.png"></p>
-<p><img src="/linux_command/5.png"></p>
-<p><img src="/linux_command/6.png"></p>
-<p><img src="/linux_command/7.png"></p>
-<p><img src="/linux_command/8.png"></p>
-<p>写法：[ls -l -a ] [ls -la] [ls -al]上述三种写法，都是一样的</p>
-<h2 id="二、浏览文件类命令"><a href="#二、浏览文件类命令" class="headerlink" title="二、浏览文件类命令"></a>二、浏览文件类命令</h2><h4 id="1、cat-参数-文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）"><a href="#1、cat-参数-文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）" class="headerlink" title="*1、cat [参数] 文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）"></a>*1、cat [参数] 文件名（用于滚屏显示文件内容或是将多个文件合并成一个文件）</h4><p>参数：-b（对输出内容中非空行标注行号），-n（对所有行标注）</p>
-<p><img src="/linux_command/9.png"></p>
-<p><img src="/linux_command/10.png"></p>
-<p>利用cat命令还可以<strong>合并</strong>多个文件。例如，要把file1和file2文件的内容合并为file3，且file2文件的内容在file1文件的内容前面，则命令为</p>
-<p><img src="/linux_command/11.png"></p>
-<h4 id="2、more-参数-文件名（可一页一页地分屏显示文件内容）"><a href="#2、more-参数-文件名（可一页一页地分屏显示文件内容）" class="headerlink" title="2、more [参数] 文件名（可一页一页地分屏显示文件内容）"></a>2、more [参数] 文件名（可一页一页地分屏显示文件内容）</h4><p>进入more状态后，按enter向下一行，空格是下一页，Q是退出</p>
-<p>参数：-数字（每页行数），+数字（从文件第几行开始显示）</p>
-<p><img src="/linux_command/12.png"></p>
-<h4 id="3、less（比more命令的功能强大）"><a href="#3、less（比more命令的功能强大）" class="headerlink" title="3、less（比more命令的功能强大）"></a>3、less（比more命令的功能强大）</h4><p>进入less状态后，enter下一行，空格下一页，B上一页，方向键可以移动，Q退出，查找文本时使用&#x2F;+查找内容回车即可，继续查找按&#x2F;+回车</p>
-<p>参数：-数字（每页行数），+数字（从文件第几行开始显示）</p>
-<p><img src="/linux_command/13.png"></p>
-<h4 id="4、head-参数-文件名"><a href="#4、head-参数-文件名" class="headerlink" title="*4、head [参数] 文件名"></a>*4、head [参数] 文件名</h4><p>参数：-n 数字（显示前多少行），-c 数字（显示前多少字符）</p>
-<p><img src="/linux_command/14.png"></p>
-<h4 id="5、tail-参数-文件名（查看文件内容，也可以查看系统用户有哪些）"><a href="#5、tail-参数-文件名（查看文件内容，也可以查看系统用户有哪些）" class="headerlink" title="*5、tail [参数] 文件名（查看文件内容，也可以查看系统用户有哪些）"></a>*5、tail [参数] 文件名（查看文件内容，也可以查看系统用户有哪些）</h4><p>参数：-n 数字（显示末尾多少行），-c 数字（显示末尾多少字符），-f 文件名（刷新）</p>
-<p><img src="/linux_command/15.png"></p>
-<p><img src="/linux_command/16.png"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中最基础的命令，包括浏览目录和浏览文件的常用命令。这些命令是Linux操作的基础，掌握它们可以帮助你快速熟悉Linux系统的文件结构和内容查看方式。在后续文章中，我们将继续介绍更多Linux常用命令，敬请期待！</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>命令行</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux常用命令3：解压缩命令篇</title>
     <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A43%EF%BC%9A%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令3：解压缩命令篇"><a href="#Linux常用命令3：解压缩命令篇" class="headerlink" title="Linux常用命令3：解压缩命令篇"></a>Linux常用命令3：解压缩命令篇</h1><p>在Linux系统中，解压缩命令是处理压缩文件的重要工具。本文将介绍常用的解压缩命令，包括tar、gzip、zip和bzip2等，帮助你高效处理各种压缩格式的文件。</p>
@@ -162,6 +162,38 @@
 <p>-k：保留源文件</p>
 <p><img src="/linux_command/44.png"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中常用的解压缩命令，包括tar、gzip、zip和bzip2等。这些命令可以处理各种常见的压缩格式，帮助你在Linux系统中高效地打包和解压文件。掌握这些命令对于日常工作和系统管理非常重要。在后续文章中，我们将继续介绍系统信息和进程管理的常用命令，敬请期待！</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令5：其他常用命令篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A45%EF%BC%9A%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令5：其他常用命令篇"><a href="#Linux常用命令5：其他常用命令篇" class="headerlink" title="Linux常用命令5：其他常用命令篇"></a>Linux常用命令5：其他常用命令篇</h1><p>在Linux系统中，除了基础命令、文件操作和系统管理命令外，还有许多其他常用命令。本文将介绍这些实用的辅助命令，帮助你更高效地使用Linux系统。</p>
+<h2 id="八、其他常用命令"><a href="#八、其他常用命令" class="headerlink" title="八、其他常用命令"></a>八、其他常用命令</h2><h4 id="1、clear（清除终端内容（ctrl-L））"><a href="#1、clear（清除终端内容（ctrl-L））" class="headerlink" title="1、clear（清除终端内容（ctrl+L））"></a>1、clear（清除终端内容（ctrl+L））</h4><p><img src="/linux_command/68.png"></p>
+<h4 id="2、uname（显示系统信息）"><a href="#2、uname（显示系统信息）" class="headerlink" title="2、uname（显示系统信息）"></a>2、uname（显示系统信息）</h4><p><img src="/linux_command/69.png"></p>
+<p><img src="/linux_command/70.png"></p>
+<h4 id="3、man（列出命令帮助手册）"><a href="#3、man（列出命令帮助手册）" class="headerlink" title="3、man（列出命令帮助手册）"></a>3、man（列出命令帮助手册）</h4><p><img src="/linux_command/71.png"></p>
+<h4 id="4、shutdown-参数-时间-警告信息"><a href="#4、shutdown-参数-时间-警告信息" class="headerlink" title="*4、shutdown [参数] 时间 [警告信息]"></a>*4、shutdown [参数] 时间 [警告信息]</h4><p>参数：-r：重新启动</p>
+<p>-h：关闭系统</p>
+<p>时间参数：now：现在</p>
+<p>hh:mm：小时:分钟</p>
+<p>+m：m分钟后</p>
+<h4 id="5、halt（立即停止系统，需人工关闭电源）"><a href="#5、halt（立即停止系统，需人工关闭电源）" class="headerlink" title="5、halt（立即停止系统，需人工关闭电源）"></a>5、halt（立即停止系统，需人工关闭电源）</h4><h4 id="6、reboot（重启）"><a href="#6、reboot（重启）" class="headerlink" title="*6、reboot（重启）"></a>*6、reboot（重启）</h4><h4 id="7、poweroff（立即停止系统并关闭电源）"><a href="#7、poweroff（立即停止系统并关闭电源）" class="headerlink" title="*7、poweroff（立即停止系统并关闭电源）"></a>*7、poweroff（立即停止系统并关闭电源）</h4><h4 id="8、alias-命令别名-”命令行”（创建命令别名）"><a href="#8、alias-命令别名-”命令行”（创建命令别名）" class="headerlink" title="*8、alias 命令别名&#x3D;”命令行”（创建命令别名）"></a>*8、alias 命令别名&#x3D;”命令行”（创建命令别名）</h4><p><img src="/linux_command/72.png"></p>
+<h4 id="9、unalias-命令名（取消别名）"><a href="#9、unalias-命令名（取消别名）" class="headerlink" title="*9、unalias 命令名（取消别名）"></a>*9、unalias 命令名（取消别名）</h4><p><img src="/linux_command/73.png"></p>
+<h4 id="10、history（显示最近执行命令，在历史命令前加！可重新运行命令）"><a href="#10、history（显示最近执行命令，在历史命令前加！可重新运行命令）" class="headerlink" title="10、history（显示最近执行命令，在历史命令前加！可重新运行命令）"></a>10、history（显示最近执行命令，在历史命令前加！可重新运行命令）</h4><h4 id="11、who（查看当前登入主机的用户终端信息）"><a href="#11、who（查看当前登入主机的用户终端信息）" class="headerlink" title="11、who（查看当前登入主机的用户终端信息）"></a>11、who（查看当前登入主机的用户终端信息）</h4><p><img src="/linux_command/74.png"></p>
+<h4 id="12、wget-参数-下载地址（下载网络文件）"><a href="#12、wget-参数-下载地址（下载网络文件）" class="headerlink" title="12、wget [参数] 下载地址（下载网络文件）"></a>12、wget [参数] 下载地址（下载网络文件）</h4><p>参数：-c：断点续传</p>
+<p>-b：后台下载（tail -f wget-log查看进度）</p>
+<p>-p：下载至指定目录</p>
+<h4 id="13、last-参数-（查看所有系统的登录记录）"><a href="#13、last-参数-（查看所有系统的登录记录）" class="headerlink" title="13、last [参数]（查看所有系统的登录记录）"></a>13、last [参数]（查看所有系统的登录记录）</h4><h4 id="14、sosreport（收集系统配置及架构信息并输出判断文档）"><a href="#14、sosreport（收集系统配置及架构信息并输出判断文档）" class="headerlink" title="14、sosreport（收集系统配置及架构信息并输出判断文档）"></a>14、sosreport（收集系统配置及架构信息并输出判断文档）</h4><h4 id="15、echo-字符串-变量-（终端输出字符串或变量提取后的值）"><a href="#15、echo-字符串-变量-（终端输出字符串或变量提取后的值）" class="headerlink" title="*15、echo [字符串|$变量]（终端输出字符串或变量提取后的值）"></a>*15、echo [字符串|$变量]（终端输出字符串或变量提取后的值）</h4><p><img src="/linux_command/75.png"></p>
+<p>加$是提取后面字符的值</p>
+<p><img src="/linux_command/76.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中各种实用的辅助命令，包括终端操作、系统信息查看、命令帮助、系统关机重启、命令别名、历史命令、用户信息查看、网络下载等。这些命令虽然不如基础命令和系统管理命令常用，但在特定场景下非常实用。掌握这些命令可以帮助你更高效地使用Linux系统。在后续文章中，我们将继续介绍用户和群组管理的常用命令，敬请期待！</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -214,38 +246,6 @@
 <h4 id="6、top（监控进程状况）"><a href="#6、top（监控进程状况）" class="headerlink" title="6、top（监控进程状况）"></a>6、top（监控进程状况）</h4><p>监控进程状况（默认5秒刷新）也可用“top -d 20”改为每二十秒刷新一次</p>
 <p>shift+m对内存情况排序</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中查看系统信息和管理进程的常用命令。通过这些命令，你可以了解系统的硬件状态、内存使用情况、磁盘使用情况，以及管理系统中的进程。掌握这些命令对于系统监控和维护非常重要。在后续文章中，我们将继续介绍其他常用命令，敬请期待！</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>命令行</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux常用命令5：其他常用命令篇</title>
-    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A45%EF%BC%9A%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令5：其他常用命令篇"><a href="#Linux常用命令5：其他常用命令篇" class="headerlink" title="Linux常用命令5：其他常用命令篇"></a>Linux常用命令5：其他常用命令篇</h1><p>在Linux系统中，除了基础命令、文件操作和系统管理命令外，还有许多其他常用命令。本文将介绍这些实用的辅助命令，帮助你更高效地使用Linux系统。</p>
-<h2 id="八、其他常用命令"><a href="#八、其他常用命令" class="headerlink" title="八、其他常用命令"></a>八、其他常用命令</h2><h4 id="1、clear（清除终端内容（ctrl-L））"><a href="#1、clear（清除终端内容（ctrl-L））" class="headerlink" title="1、clear（清除终端内容（ctrl+L））"></a>1、clear（清除终端内容（ctrl+L））</h4><p><img src="/linux_command/68.png"></p>
-<h4 id="2、uname（显示系统信息）"><a href="#2、uname（显示系统信息）" class="headerlink" title="2、uname（显示系统信息）"></a>2、uname（显示系统信息）</h4><p><img src="/linux_command/69.png"></p>
-<p><img src="/linux_command/70.png"></p>
-<h4 id="3、man（列出命令帮助手册）"><a href="#3、man（列出命令帮助手册）" class="headerlink" title="3、man（列出命令帮助手册）"></a>3、man（列出命令帮助手册）</h4><p><img src="/linux_command/71.png"></p>
-<h4 id="4、shutdown-参数-时间-警告信息"><a href="#4、shutdown-参数-时间-警告信息" class="headerlink" title="*4、shutdown [参数] 时间 [警告信息]"></a>*4、shutdown [参数] 时间 [警告信息]</h4><p>参数：-r：重新启动</p>
-<p>-h：关闭系统</p>
-<p>时间参数：now：现在</p>
-<p>hh:mm：小时:分钟</p>
-<p>+m：m分钟后</p>
-<h4 id="5、halt（立即停止系统，需人工关闭电源）"><a href="#5、halt（立即停止系统，需人工关闭电源）" class="headerlink" title="5、halt（立即停止系统，需人工关闭电源）"></a>5、halt（立即停止系统，需人工关闭电源）</h4><h4 id="6、reboot（重启）"><a href="#6、reboot（重启）" class="headerlink" title="*6、reboot（重启）"></a>*6、reboot（重启）</h4><h4 id="7、poweroff（立即停止系统并关闭电源）"><a href="#7、poweroff（立即停止系统并关闭电源）" class="headerlink" title="*7、poweroff（立即停止系统并关闭电源）"></a>*7、poweroff（立即停止系统并关闭电源）</h4><h4 id="8、alias-命令别名-”命令行”（创建命令别名）"><a href="#8、alias-命令别名-”命令行”（创建命令别名）" class="headerlink" title="*8、alias 命令别名&#x3D;”命令行”（创建命令别名）"></a>*8、alias 命令别名&#x3D;”命令行”（创建命令别名）</h4><p><img src="/linux_command/72.png"></p>
-<h4 id="9、unalias-命令名（取消别名）"><a href="#9、unalias-命令名（取消别名）" class="headerlink" title="*9、unalias 命令名（取消别名）"></a>*9、unalias 命令名（取消别名）</h4><p><img src="/linux_command/73.png"></p>
-<h4 id="10、history（显示最近执行命令，在历史命令前加！可重新运行命令）"><a href="#10、history（显示最近执行命令，在历史命令前加！可重新运行命令）" class="headerlink" title="10、history（显示最近执行命令，在历史命令前加！可重新运行命令）"></a>10、history（显示最近执行命令，在历史命令前加！可重新运行命令）</h4><h4 id="11、who（查看当前登入主机的用户终端信息）"><a href="#11、who（查看当前登入主机的用户终端信息）" class="headerlink" title="11、who（查看当前登入主机的用户终端信息）"></a>11、who（查看当前登入主机的用户终端信息）</h4><p><img src="/linux_command/74.png"></p>
-<h4 id="12、wget-参数-下载地址（下载网络文件）"><a href="#12、wget-参数-下载地址（下载网络文件）" class="headerlink" title="12、wget [参数] 下载地址（下载网络文件）"></a>12、wget [参数] 下载地址（下载网络文件）</h4><p>参数：-c：断点续传</p>
-<p>-b：后台下载（tail -f wget-log查看进度）</p>
-<p>-p：下载至指定目录</p>
-<h4 id="13、last-参数-（查看所有系统的登录记录）"><a href="#13、last-参数-（查看所有系统的登录记录）" class="headerlink" title="13、last [参数]（查看所有系统的登录记录）"></a>13、last [参数]（查看所有系统的登录记录）</h4><h4 id="14、sosreport（收集系统配置及架构信息并输出判断文档）"><a href="#14、sosreport（收集系统配置及架构信息并输出判断文档）" class="headerlink" title="14、sosreport（收集系统配置及架构信息并输出判断文档）"></a>14、sosreport（收集系统配置及架构信息并输出判断文档）</h4><h4 id="15、echo-字符串-变量-（终端输出字符串或变量提取后的值）"><a href="#15、echo-字符串-变量-（终端输出字符串或变量提取后的值）" class="headerlink" title="*15、echo [字符串|$变量]（终端输出字符串或变量提取后的值）"></a>*15、echo [字符串|$变量]（终端输出字符串或变量提取后的值）</h4><p><img src="/linux_command/75.png"></p>
-<p>加$是提取后面字符的值</p>
-<p><img src="/linux_command/76.png"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中各种实用的辅助命令，包括终端操作、系统信息查看、命令帮助、系统关机重启、命令别名、历史命令、用户信息查看、网络下载等。这些命令虽然不如基础命令和系统管理命令常用，但在特定场景下非常实用。掌握这些命令可以帮助你更高效地使用Linux系统。在后续文章中，我们将继续介绍用户和群组管理的常用命令，敬请期待！</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -335,41 +335,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux常用命令8：网络命令篇</title>
-    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A48%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令8：网络命令篇"><a href="#Linux常用命令8：网络命令篇" class="headerlink" title="Linux常用命令8：网络命令篇"></a>Linux常用命令8：网络命令篇</h1><p>在Linux系统中，网络命令是配置和诊断网络连接的重要工具。本文将介绍常用的网络命令，帮助你管理和调试Linux系统的网络连接。</p>
-<h1 id="十一、常用网络命令"><a href="#十一、常用网络命令" class="headerlink" title="十一、常用网络命令"></a>十一、常用网络命令</h1><h4 id="1、ping-参数-目标主机或ip"><a href="#1、ping-参数-目标主机或ip" class="headerlink" title="1、ping [参数] 目标主机或ip"></a>1、ping [参数] 目标主机或ip</h4><p><img src="/linux_command/109.png"></p>
-<p><img src="/linux_command/110.png"></p>
-<h4 id="2、traceroute-参数-目标主机或ip（查看经过路径）"><a href="#2、traceroute-参数-目标主机或ip（查看经过路径）" class="headerlink" title="2、traceroute [参数] 目标主机或ip（查看经过路径）"></a>2、traceroute [参数] 目标主机或ip（查看经过路径）</h4><p><img src="/linux_command/111.png"></p>
-<p><img src="/linux_command/112.png"></p>
-<h4 id="3、netstat-参数-（查看网络连接、路由表信息和网络接口状态信息）"><a href="#3、netstat-参数-（查看网络连接、路由表信息和网络接口状态信息）" class="headerlink" title="3、netstat [参数]（查看网络连接、路由表信息和网络接口状态信息）"></a>3、netstat [参数]（查看网络连接、路由表信息和网络接口状态信息）</h4><p><img src="/linux_command/113.png"></p>
-<p><img src="/linux_command/114.png"></p>
-<h4 id="4、ifconfig-网络接口设备名-（查看网络设备tcp-ip参数）"><a href="#4、ifconfig-网络接口设备名-（查看网络设备tcp-ip参数）" class="headerlink" title="4、ifconfig [网络接口设备名]（查看网络设备tcp&#x2F;ip参数）"></a>4、ifconfig [网络接口设备名]（查看网络设备tcp&#x2F;ip参数）</h4><p><img src="/linux_command/115.png"></p>
-<h4 id="5、ip-参数-（查看网络接口信息ip）"><a href="#5、ip-参数-（查看网络接口信息ip）" class="headerlink" title="5、ip [参数]（查看网络接口信息ip）"></a>5、ip [参数]（查看网络接口信息ip）</h4><p>ip address show–获取网卡配置与网络状态等信息<img src="/linux_command/116.png"></p>
-<p><img src="/linux_command/117.png"></p>
-<h4 id="6、-etc-resolv-conf（查看dns服务器地址）"><a href="#6、-etc-resolv-conf（查看dns服务器地址）" class="headerlink" title="6、&#x2F;etc&#x2F;resolv.conf（查看dns服务器地址）"></a>6、&#x2F;etc&#x2F;resolv.conf（查看dns服务器地址）</h4><p><img src="/linux_command/118.png"></p>
-<h4 id="7、ip-route-list（查看路由表信息）"><a href="#7、ip-route-list（查看路由表信息）" class="headerlink" title="7、ip route list（查看路由表信息）"></a>7、ip route list（查看路由表信息）</h4><p><img src="/linux_command/119.png"></p>
-<h4 id="8、hostname（当前系统主机名）"><a href="#8、hostname（当前系统主机名）" class="headerlink" title="8、hostname（当前系统主机名）"></a>8、hostname（当前系统主机名）</h4><p>后面加上ctl显示更详细信息</p>
-<p><img src="/linux_command/120.png"></p>
-<h4 id="9、nmtui（图形界面配置网络）"><a href="#9、nmtui（图形界面配置网络）" class="headerlink" title="9、nmtui（图形界面配置网络）"></a>9、nmtui（图形界面配置网络）</h4><h4 id="10、nmcli（命令配置网络）"><a href="#10、nmcli（命令配置网络）" class="headerlink" title="10、nmcli（命令配置网络）"></a>10、nmcli（命令配置网络）</h4><p><img src="/linux_command/121.png"></p>
-<p>参数：</p>
-<p><img src="/linux_command/122.png"></p>
-<p>练习：</p>
-<p><img src="/linux_command/123.png"></p>
-<p><img src="/linux_command/124.png"></p>
-<p><img src="/linux_command/125.png"></p>
-<h4 id="11、network（网络服务设置）"><a href="#11、network（网络服务设置）" class="headerlink" title="11、network（网络服务设置）"></a>11、network（网络服务设置）</h4><p><img src="/linux_command/126.png"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中常用的网络命令，包括网络诊断工具（ping、traceroute）、网络状态查看工具（netstat、ifconfig、ip）、DNS配置查看（&#x2F;etc&#x2F;resolv.conf）、路由表查看（ip route list）、主机名管理（hostname）以及网络配置工具（nmtui、nmcli）等。这些命令对于网络故障诊断、网络配置和网络状态监控非常重要。掌握这些命令可以帮助你更好地管理和维护Linux系统的网络连接。在后续文章中，我们将介绍vim编辑器和shell脚本的常用命令，敬请期待！</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>命令行</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux常用命令7：文件系统和权限篇</title>
     <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A47%EF%BC%9A%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%9D%83%E9%99%90%E7%AF%87/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令7：文件系统和权限篇"><a href="#Linux常用命令7：文件系统和权限篇" class="headerlink" title="Linux常用命令7：文件系统和权限篇"></a>Linux常用命令7：文件系统和权限篇</h1><p>在Linux系统中，文件系统和权限管理是确保系统安全和数据完整性的重要组成部分。本文将介绍Linux文件系统的基本概念、文件权限的理解和管理，以及相关的常用命令。</p>
@@ -443,24 +408,38 @@
       </tags>
   </entry>
   <entry>
-    <title>nginx</title>
-    <url>/2025/11/19/nginx/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="nginx发布网页"><a href="#nginx发布网页" class="headerlink" title="nginx发布网页"></a>nginx发布网页</h1><p>nginx是什么？</p>
-<p>nginx是一个高性能的http和反向代理web服务器，特点：内存占用少，并发能力强，热部署。</p>
-<h2 id="Windows部署"><a href="#Windows部署" class="headerlink" title="Windows部署"></a>Windows部署</h2><p>常用命令：（1）启动：start nginx（2）停止：nginx -s stop（3）重启：nginx -s reload</p>
-<p>注意：在修改配置文件时，需在con\nginx.conf下的location的root中修改文件路径，*文件路径不是\应该是&#x2F;</p>
-<p><img src="/nginx/1.png" alt="nginx配置文件"><br><img src="/nginx/2.png" alt="nginx配置文件"><br><img src="/nginx/3.png" alt="nginx配置文件"></p>
-<h2 id="Ubuntu部署"><a href="#Ubuntu部署" class="headerlink" title="Ubuntu部署"></a>Ubuntu部署</h2><p>安装vim、nginx</p>
-<p>之后将发布网站的文件用mv移动到nginx所在文件位置下（&#x2F;etc&#x2F;nginx）</p>
-<p>修改配置文件（vim &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;default）和Windows一样</p>
-<p>之后在终端停止并启动nginx（systemctl stop&#x2F;start nginx）</p>
+    <title>Linux常用命令8：网络命令篇</title>
+    <url>/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A48%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E7%AF%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Linux常用命令8：网络命令篇"><a href="#Linux常用命令8：网络命令篇" class="headerlink" title="Linux常用命令8：网络命令篇"></a>Linux常用命令8：网络命令篇</h1><p>在Linux系统中，网络命令是配置和诊断网络连接的重要工具。本文将介绍常用的网络命令，帮助你管理和调试Linux系统的网络连接。</p>
+<h1 id="十一、常用网络命令"><a href="#十一、常用网络命令" class="headerlink" title="十一、常用网络命令"></a>十一、常用网络命令</h1><h4 id="1、ping-参数-目标主机或ip"><a href="#1、ping-参数-目标主机或ip" class="headerlink" title="1、ping [参数] 目标主机或ip"></a>1、ping [参数] 目标主机或ip</h4><p><img src="/linux_command/109.png"></p>
+<p><img src="/linux_command/110.png"></p>
+<h4 id="2、traceroute-参数-目标主机或ip（查看经过路径）"><a href="#2、traceroute-参数-目标主机或ip（查看经过路径）" class="headerlink" title="2、traceroute [参数] 目标主机或ip（查看经过路径）"></a>2、traceroute [参数] 目标主机或ip（查看经过路径）</h4><p><img src="/linux_command/111.png"></p>
+<p><img src="/linux_command/112.png"></p>
+<h4 id="3、netstat-参数-（查看网络连接、路由表信息和网络接口状态信息）"><a href="#3、netstat-参数-（查看网络连接、路由表信息和网络接口状态信息）" class="headerlink" title="3、netstat [参数]（查看网络连接、路由表信息和网络接口状态信息）"></a>3、netstat [参数]（查看网络连接、路由表信息和网络接口状态信息）</h4><p><img src="/linux_command/113.png"></p>
+<p><img src="/linux_command/114.png"></p>
+<h4 id="4、ifconfig-网络接口设备名-（查看网络设备tcp-ip参数）"><a href="#4、ifconfig-网络接口设备名-（查看网络设备tcp-ip参数）" class="headerlink" title="4、ifconfig [网络接口设备名]（查看网络设备tcp&#x2F;ip参数）"></a>4、ifconfig [网络接口设备名]（查看网络设备tcp&#x2F;ip参数）</h4><p><img src="/linux_command/115.png"></p>
+<h4 id="5、ip-参数-（查看网络接口信息ip）"><a href="#5、ip-参数-（查看网络接口信息ip）" class="headerlink" title="5、ip [参数]（查看网络接口信息ip）"></a>5、ip [参数]（查看网络接口信息ip）</h4><p>ip address show–获取网卡配置与网络状态等信息<img src="/linux_command/116.png"></p>
+<p><img src="/linux_command/117.png"></p>
+<h4 id="6、-etc-resolv-conf（查看dns服务器地址）"><a href="#6、-etc-resolv-conf（查看dns服务器地址）" class="headerlink" title="6、&#x2F;etc&#x2F;resolv.conf（查看dns服务器地址）"></a>6、&#x2F;etc&#x2F;resolv.conf（查看dns服务器地址）</h4><p><img src="/linux_command/118.png"></p>
+<h4 id="7、ip-route-list（查看路由表信息）"><a href="#7、ip-route-list（查看路由表信息）" class="headerlink" title="7、ip route list（查看路由表信息）"></a>7、ip route list（查看路由表信息）</h4><p><img src="/linux_command/119.png"></p>
+<h4 id="8、hostname（当前系统主机名）"><a href="#8、hostname（当前系统主机名）" class="headerlink" title="8、hostname（当前系统主机名）"></a>8、hostname（当前系统主机名）</h4><p>后面加上ctl显示更详细信息</p>
+<p><img src="/linux_command/120.png"></p>
+<h4 id="9、nmtui（图形界面配置网络）"><a href="#9、nmtui（图形界面配置网络）" class="headerlink" title="9、nmtui（图形界面配置网络）"></a>9、nmtui（图形界面配置网络）</h4><h4 id="10、nmcli（命令配置网络）"><a href="#10、nmcli（命令配置网络）" class="headerlink" title="10、nmcli（命令配置网络）"></a>10、nmcli（命令配置网络）</h4><p><img src="/linux_command/121.png"></p>
+<p>参数：</p>
+<p><img src="/linux_command/122.png"></p>
+<p>练习：</p>
+<p><img src="/linux_command/123.png"></p>
+<p><img src="/linux_command/124.png"></p>
+<p><img src="/linux_command/125.png"></p>
+<h4 id="11、network（网络服务设置）"><a href="#11、network（网络服务设置）" class="headerlink" title="11、network（网络服务设置）"></a>11、network（网络服务设置）</h4><p><img src="/linux_command/126.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了Linux系统中常用的网络命令，包括网络诊断工具（ping、traceroute）、网络状态查看工具（netstat、ifconfig、ip）、DNS配置查看（&#x2F;etc&#x2F;resolv.conf）、路由表查看（ip route list）、主机名管理（hostname）以及网络配置工具（nmtui、nmcli）等。这些命令对于网络故障诊断、网络配置和网络状态监控非常重要。掌握这些命令可以帮助你更好地管理和维护Linux系统的网络连接。在后续文章中，我们将介绍vim编辑器和shell脚本的常用命令，敬请期待！</p>
 ]]></content>
       <categories>
-        <category>nginx</category>
+        <category>Linux</category>
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>nginx</tag>
+        <tag>命令行</tag>
       </tags>
   </entry>
   <entry>
@@ -497,33 +476,6 @@
       <tags>
         <tag>Linux</tag>
         <tag>命令行</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ssh</title>
-    <url>/2025/11/24/ssh/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="ssh步骤"><a href="#ssh步骤" class="headerlink" title="ssh步骤"></a>ssh步骤</h1><p>先装好ubuntu或安装基于linux内核而衍生出来的系统</p>
-<h2 id="确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）"><a href="#确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）" class="headerlink" title="确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）"></a>确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）</h2><p>在命令终端输入service sshd status（sudo service sshd status）或systemctl status sshd（sudo systemctl status ssh）查看是否启动了ssh服务，当出现active（running）时，则启动。</p>
-<p><img src="/ssh/1.png"></p>
-<p><img src="/ssh/2.png"></p>
-<p><img src="/ssh/3.png"></p>
-<p>更新软件仓库（apt-get update），完成后，使用apt-get install openssh-server安装openssh服务，若ssh服务已安装，但未启动，使用systemectl start sshd（service sshd start）启动，启动后进行后续操作。</p>
-<p><img src="/ssh/4.png"></p>
-<p><img src="/ssh/5.png"></p>
-<h2 id="查看ip地址"><a href="#查看ip地址" class="headerlink" title="查看ip地址"></a>查看ip地址</h2><p>ifconfig，ufw status（查看防火墙状态），ufw disabled（禁用防火墙），ufw enabled（启动防火墙）。</p>
-<p><img src="/ssh/6.png"></p>
-<p>在本地使用ssh命令连接服务器，在本地命令行输入ssh [用户名]@[ip地址]</p>
-<p><img src="/ssh/7.png"></p>
-<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><p>scp [选项] [源文件&#x2F;目录] [用户名]@[目标地址]:[目标路径]</p>
-<p>示例：scp -r C:\Users\HP\Desktop\sample.txt <a href="mailto:&#x75;&#x62;&#117;&#110;&#x74;&#117;&#64;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#56;&#x2e;&#x32;&#51;&#x30;&#46;&#x31;&#x32;&#56;">&#x75;&#x62;&#117;&#110;&#x74;&#117;&#64;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#56;&#x2e;&#x32;&#51;&#x30;&#46;&#x31;&#x32;&#56;</a>:&#x2F;home&#x2F;ubuntu</p>
-<p><img src="/ssh/8.png"></p>
-]]></content>
-      <categories>
-        <category>ssh</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -602,6 +554,54 @@
         <tag>Linux</tag>
         <tag>Kali</tag>
         <tag>输入法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh</title>
+    <url>/2025/11/24/ssh/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="ssh步骤"><a href="#ssh步骤" class="headerlink" title="ssh步骤"></a>ssh步骤</h1><p>先装好ubuntu或安装基于linux内核而衍生出来的系统</p>
+<h2 id="确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）"><a href="#确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）" class="headerlink" title="确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）"></a>确保linux已经安装并成功启动ssh服务（如以下命令错误就把sshd改成ssh）</h2><p>在命令终端输入service sshd status（sudo service sshd status）或systemctl status sshd（sudo systemctl status ssh）查看是否启动了ssh服务，当出现active（running）时，则启动。</p>
+<p><img src="/ssh/1.png"></p>
+<p><img src="/ssh/2.png"></p>
+<p><img src="/ssh/3.png"></p>
+<p>更新软件仓库（apt-get update），完成后，使用apt-get install openssh-server安装openssh服务，若ssh服务已安装，但未启动，使用systemectl start sshd（service sshd start）启动，启动后进行后续操作。</p>
+<p><img src="/ssh/4.png"></p>
+<p><img src="/ssh/5.png"></p>
+<h2 id="查看ip地址"><a href="#查看ip地址" class="headerlink" title="查看ip地址"></a>查看ip地址</h2><p>ifconfig，ufw status（查看防火墙状态），ufw disabled（禁用防火墙），ufw enabled（启动防火墙）。</p>
+<p><img src="/ssh/6.png"></p>
+<p>在本地使用ssh命令连接服务器，在本地命令行输入ssh [用户名]@[ip地址]</p>
+<p><img src="/ssh/7.png"></p>
+<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><p>scp [选项] [源文件&#x2F;目录] [用户名]@[目标地址]:[目标路径]</p>
+<p>示例：scp -r C:\Users\HP\Desktop\sample.txt <a href="mailto:&#x75;&#x62;&#x75;&#x6e;&#116;&#x75;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#56;&#x2e;&#x32;&#51;&#x30;&#x2e;&#49;&#x32;&#56;">&#x75;&#x62;&#x75;&#x6e;&#116;&#x75;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#56;&#x2e;&#x32;&#51;&#x30;&#x2e;&#49;&#x32;&#56;</a>:&#x2F;home&#x2F;ubuntu</p>
+<p><img src="/ssh/8.png"></p>
+]]></content>
+      <categories>
+        <category>ssh</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx</title>
+    <url>/2025/11/19/nginx/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="nginx发布网页"><a href="#nginx发布网页" class="headerlink" title="nginx发布网页"></a>nginx发布网页</h1><p>nginx是什么？</p>
+<p>nginx是一个高性能的http和反向代理web服务器，特点：内存占用少，并发能力强，热部署。</p>
+<h2 id="Windows部署"><a href="#Windows部署" class="headerlink" title="Windows部署"></a>Windows部署</h2><p>常用命令：（1）启动：start nginx（2）停止：nginx -s stop（3）重启：nginx -s reload</p>
+<p>注意：在修改配置文件时，需在con\nginx.conf下的location的root中修改文件路径，*文件路径不是\应该是&#x2F;</p>
+<p><img src="/nginx/1.png" alt="nginx配置文件"><br><img src="/nginx/2.png" alt="nginx配置文件"><br><img src="/nginx/3.png" alt="nginx配置文件"></p>
+<h2 id="Ubuntu部署"><a href="#Ubuntu部署" class="headerlink" title="Ubuntu部署"></a>Ubuntu部署</h2><p>安装vim、nginx</p>
+<p>之后将发布网站的文件用mv移动到nginx所在文件位置下（&#x2F;etc&#x2F;nginx）</p>
+<p>修改配置文件（vim &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;default）和Windows一样</p>
+<p>之后在终端停止并启动nginx（systemctl stop&#x2F;start nginx）</p>
+]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>nginx</tag>
       </tags>
   </entry>
 </search>
