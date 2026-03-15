@@ -575,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (!isExpand) {
             let parent = currentActive.parentNode
-            while (!parent.matches('.toc')) {
+            while (parent && parent.nodeType === 1 && !parent.matches('.toc')) {
               if (parent.matches('li')) parent.classList.add('active')
               parent = parent.parentNode
             }
