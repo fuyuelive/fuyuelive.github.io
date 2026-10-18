@@ -1,0 +1,32 @@
+# robots.txt for jiangdonggeek.cn
+# 规范说明:https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# ------- 主要搜索引擎 -------
+User-agent: Baiduspider
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# ------- 国内其他搜索 -------
+User-agent: 360Spider
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# ------- 站点地图 -------
+Sitemap: https://jiangdonggeek.cn/sitemap.xml
