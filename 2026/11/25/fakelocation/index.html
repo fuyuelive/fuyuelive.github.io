@@ -1,0 +1,539 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程 | J.dong &amp; 博客</title><meta name="author" content="J.dong"><meta name="copyright" content="J.dong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="写在前面平时总有些场景会用到”虚拟定位”这件事：测试自己的 App 在不同城市的显示效果、某些应用限定地区才能用、拍照片想要别的位置信息、或者单纯想在地图上”瞬移”一下。 安卓上做这个的工具不少，但真正好用、稳定、功能又全的其实不多。Fake Location 是我用了挺久的一个，作者是 Lerist，从早期的 Xposed 模块做到现在独立 App，算是国内这块最成熟的作品之一。 这个版本是 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程">
+<meta property="og:url" content="https://jiangdonggeek.cn/2026/11/25/fakelocation/index.html">
+<meta property="og:site_name" content="J.dong &amp; 博客">
+<meta property="og:description" content="写在前面平时总有些场景会用到”虚拟定位”这件事：测试自己的 App 在不同城市的显示效果、某些应用限定地区才能用、拍照片想要别的位置信息、或者单纯想在地图上”瞬移”一下。 安卓上做这个的工具不少，但真正好用、稳定、功能又全的其实不多。Fake Location 是我用了挺久的一个，作者是 Lerist，从早期的 Xposed 模块做到现在独立 App，算是国内这块最成熟的作品之一。 这个版本是 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jiangdonggeek.cn/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg">
+<meta property="article:published_time" content="2026-11-25T09:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-25T08:39:26.815Z">
+<meta property="article:author" content="J.dong">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="虚拟定位">
+<meta property="article:tag" content="FakeLocation">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jiangdonggeek.cn/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程",
+  "url": "https://jiangdonggeek.cn/2026/11/25/fakelocation/",
+  "image": "https://jiangdonggeek.cn/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg",
+  "datePublished": "2026-11-25T09:00:00.000Z",
+  "dateModified": "2026-11-25T08:39:26.815Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "J.dong",
+      "url": "https://jiangdonggeek.cn"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jiangdonggeek.cn/2026/11/25/fakelocation/index.html"><link rel="preconnect"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="bing-site-verification" content="https://api.indexnow.org/indexnow?key=4f3c6b90d3da420bb306de8a892c98b3&amp;url=https://www.jiangdonggeek.cn/"/><meta name="baidu-site-verification" content="http://data.zz.baidu.com/urls?site=https://www.jiangdonggeek.cn&amp;token=9XTE9feLG5N1AYTL"/><link rel="stylesheet" href="/css/index.css?v=5.5.2"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css?v=7.1.0"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css?v=0.1.16" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.css?v=6.1.4" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js?v=4.12.0',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="baidu-site-verification" content="codeva-OwOd2lBiYh" /><meta name="msvalidate.01" content="630617A7BD9CF470524B54D60393FA0F" /><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">J.dong &amp; 博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-11-25T09:00:00.000Z" title="发表于 2026-11-25 17:00:00">2026-11-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-11-25T08:39:26.815Z" title="更新于 2026-11-25 16:39:26">2026-11-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>平时总有些场景会用到”虚拟定位”这件事：测试自己的 App 在不同城市的显示效果、某些应用限定地区才能用、拍照片想要别的位置信息、或者单纯想在地图上”瞬移”一下。</p>
+<p>安卓上做这个的工具不少，但真正好用、稳定、功能又全的其实不多。<strong>Fake Location</strong> 是我用了挺久的一个，作者是 Lerist，从早期的 Xposed 模块做到现在独立 App，算是国内这块最成熟的作品之一。</p>
+<p>这个版本是 <strong>1.2.0.2</strong>，下面把安装和用法整理一下。</p>
+<h2 id="软件信息"><a href="#软件信息" class="headerlink" title="软件信息"></a>软件信息</h2><p><img src="/fakelocation/icon.png" alt="Fake Location" loading='lazy'></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用名称</td>
+<td>Fake Location</td>
+</tr>
+<tr>
+<td>包名</td>
+<td><code>com.lerist.fakelocation</code></td>
+</tr>
+<tr>
+<td>当前版本</td>
+<td>1.2.0.2（versionCode 413）</td>
+</tr>
+<tr>
+<td>安装包大小</td>
+<td>13.37 MB</td>
+</tr>
+<tr>
+<td>支持系统</td>
+<td>Android 5.0 及以上（minSdk 21）</td>
+</tr>
+<tr>
+<td>目标版本</td>
+<td>Android 10（targetSdk 29）</td>
+</tr>
+<tr>
+<td>架构</td>
+<td>仅 armeabi-v7a（32 位）</td>
+</tr>
+<tr>
+<td>SHA256</td>
+<td><code>175C8D515170B42BC27299C965AFA0FA8F3F4F93DAB7455CB87A14D3BA87258A</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意架构那一栏：<strong>只带 32 位 so 库</strong>。绝大多数手机都能装，但少数只支持 64 位的机型（部分新旗舰、部分模拟器）会装不上或装上闪退，这是正常现象，不是你下载的文件坏了。</p>
+</blockquote>
+<h2 id="核心功能一览"><a href="#核心功能一览" class="headerlink" title="核心功能一览"></a>核心功能一览</h2><p>这软件最狠的地方是功能分成了两层：<strong>免 ROOT 能用的</strong>和<strong>需要 ROOT 的</strong>。大多数同类软件免 ROOT 只能改个位置，它免 ROOT 也能玩路线和摇杆。</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>是否需要 ROOT</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>位置模拟</td>
+<td>❌ 不需要</td>
+<td>地图选点、搜索地点、直接输入经纬度</td>
+</tr>
+<tr>
+<td>路线模拟</td>
+<td>❌ 不需要</td>
+<td>规划起点终点，按步行&#x2F;骑行&#x2F;驾车自动移动，也能”飞”</td>
+</tr>
+<tr>
+<td>摇杆模式</td>
+<td>❌ 不需要</td>
+<td>悬浮窗摇杆实时控制移动方向</td>
+</tr>
+<tr>
+<td>海拔模拟</td>
+<td>❌（专业版）</td>
+<td>自定义海拔高度</td>
+</tr>
+<tr>
+<td>全功能摇杆</td>
+<td>❌（专业版）</td>
+<td>自定义摇杆速度、方向锁定</td>
+</tr>
+<tr>
+<td>步频模拟</td>
+<td>✅ 需要</td>
+<td>从系统底层模拟传感器，模拟步数与步行状态</td>
+</tr>
+<tr>
+<td>WIFI 模拟</td>
+<td>✅ 需要</td>
+<td>模拟当前连接的和能扫描到的 WiFi</td>
+</tr>
+<tr>
+<td>基站模拟</td>
+<td>✅ 需要</td>
+<td>模拟基站信息</td>
+</tr>
+<tr>
+<td>独立模拟</td>
+<td>✅ 需要</td>
+<td>对指定的单个或多个应用单独模拟</td>
+</tr>
+<tr>
+<td>反检测</td>
+<td>✅ 需要</td>
+<td>避免被某些应用&#x2F;游戏识别出虚拟定位</td>
+</tr>
+<tr>
+<td>ROOT 隐藏</td>
+<td>✅ 需要</td>
+<td>对指定应用隐藏 ROOT</td>
+</tr>
+<tr>
+<td>定制专属包</td>
+<td>❌ 不需要</td>
+<td>定制独立签名的安装包，从根上规避检测</td>
+</tr>
+</tbody></table>
+<p>简单说：<strong>免 ROOT 就能满足 90% 的需求</strong>，想玩到”防检测”这个层次才需要 ROOT。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><div align="center">
+
+<p><strong><a href="/fakelocation/fake_location.apk">⬇ 下载 Fake Location 1.2.0.2（13.37 MB）</a></strong></p>
+</div>
+
+<p>安卓手机直接点上面这个链接下载即可。下载完如果提示”无法安装未知来源应用”，去手机设置里允许浏览器安装应用就行。</p>
+<blockquote>
+<p>下载后可以核对一下文件大小是不是 13.37 MB，或者用文件管理器看 SHA256 是否匹配上表，确保文件完整。</p>
+</blockquote>
+<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><h3 id="方法一：免-ROOT（推荐先试这个）"><a href="#方法一：免-ROOT（推荐先试这个）" class="headerlink" title="方法一：免 ROOT（推荐先试这个）"></a>方法一：免 ROOT（推荐先试这个）</h3><p><strong>第一步：装 App</strong></p>
+<p>把下载好的 APK 装到手机上，打开后先别急着操作，会要求登录（手机号或邮箱 + 验证码），注册一下就好了。</p>
+<p><strong>第二步：开启开发者选项</strong></p>
+<p>进入手机的 <strong>设置 → 关于手机</strong>，连续点击 <strong>版本号</strong> 7 次，直到提示”您已处于开发者模式”。</p>
+<p><strong>第三步：指定模拟位置应用</strong></p>
+<p>回到 <strong>设置 → 系统 → 开发者选项</strong>，找到 <strong>选择模拟位置信息应用</strong>（有的系统叫”选取模拟位置的应用”），点进去选中 <strong>Fake Location</strong>。</p>
+<p>这一步是关键，漏了就点”启动模拟”没反应。</p>
+<p><strong>第四步：给权限</strong></p>
+<p>回到 Fake Location，把 <strong>定位权限</strong> 和 <strong>悬浮窗权限</strong> 都授予。摇杆功能必须要悬浮窗权限，App 里会有”前往授权”的按钮直接跳转。</p>
+<p><strong>第五步：开始模拟</strong></p>
+<p>在地图上点选目标位置，或者搜索地名，确认后点 <strong>启动模拟</strong> 就生效了。</p>
+<blockquote>
+<p>小技巧：启动模拟时 App 会提示”建议打开 GPS”，这是对的。模拟位置 + GPS 开启能显著提高成功率，尤其是在室内或基站信号弱的地方。</p>
+</blockquote>
+<h3 id="方法二：ROOT-模式"><a href="#方法二：ROOT-模式" class="headerlink" title="方法二：ROOT 模式"></a>方法二：ROOT 模式</h3><p>如果手机已经 ROOT（Magisk &#x2F; KernelSU 都行），直接在 App 里授予 ROOT 权限，然后那些带 <strong>(ROOT)</strong> 标识的功能就全部亮起来了：</p>
+<ul>
+<li>独立模拟（只对某个 App 生效）</li>
+<li>步频模拟</li>
+<li>WIFI 模拟 &#x2F; 基站模拟</li>
+<li>反检测 &#x2F; 增强反检测</li>
+<li>ROOT 隐藏</li>
+</ul>
+<p><strong>ROOT 模式的优势</strong>在于模拟更”底层”——不依赖开发者选项的模拟位置接口，很多靠这个接口就能识破虚拟定位的应用，在 ROOT 模式下也能骗过去。</p>
+<h3 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h3><p>文字看不明白的话，这里有个视频版，讲得很细：</p>
+<p>👉 <strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kxvdB1ELW/">【神级虚拟定位软件】fakelocation 安装教程</a></strong></p>
+<h2 id="功能详解"><a href="#功能详解" class="headerlink" title="功能详解"></a>功能详解</h2><h3 id="位置模拟"><a href="#位置模拟" class="headerlink" title="位置模拟"></a>位置模拟</h3><p>最基础也最常用。三种选点方式：</p>
+<ol>
+<li><strong>地图点选</strong> —— 拖地图到目标位置，点一下确认</li>
+<li><strong>搜索地点</strong> —— 直接搜地名</li>
+<li><strong>输入坐标</strong> —— 填经纬度，甚至能填海拔</li>
+</ol>
+<p>选好位置后保存，会自动进历史记录，下次直接点历史位置就行，不用重新找。</p>
+<h3 id="路线模拟"><a href="#路线模拟" class="headerlink" title="路线模拟"></a>路线模拟</h3><p>这个功能是拿来做”移动轨迹”的。规划好<strong>起点</strong>和<strong>终点</strong>，选择 <strong>步行 &#x2F; 骑行 &#x2F; 驾车</strong> 三种模式之一，App 就会带着你的虚拟位置沿着路线自动移动。</p>
+<p>它规划路线的时候可以手动拖拽中间的转折点，所以不只是两点直线，复杂的绕路也能做。</p>
+<p>配合 ROOT 模式下的 <strong>步频模拟</strong> 用，效果更真实——位置在动的同时步数也在涨，这套组合是很多人做运动打卡类记录时用的方案。</p>
+<h3 id="摇杆"><a href="#摇杆" class="headerlink" title="摇杆"></a>摇杆</h3><p>悬浮窗上会出现一个虚拟摇杆，你推摇杆，虚拟位置就跟着走，方向、速度都由你实时控制。</p>
+<p>免费版可以用基础摇杆，<strong>专业版</strong>才有自定义摇杆速度、摇杆方向锁定这些。</p>
+<h3 id="专业版与定制专属包"><a href="#专业版与定制专属包" class="headerlink" title="专业版与定制专属包"></a>专业版与定制专属包</h3><p>App 采用免费 + 专业版模式，免费版覆盖基础功能，专业版解锁：</p>
+<ul>
+<li>海拔模拟</li>
+<li>全功能摇杆（自定义速度、方向锁定）</li>
+<li>更长的历史记录等</li>
+</ul>
+<p>另外有个挺巧妙的功能叫 <strong>定制专属包</strong>：它可以根据你的账号生成一个<strong>独立签名的安装包</strong>，这个包本身就没带 Fake Location 的特征，所以不开反检测也不会被认出来。</p>
+<p>这个功能对没 ROOT 的用户特别有用——反检测需要 ROOT，但定制专属包不需要。</p>
+<p>入口在 <strong>设置 → 定制专属包</strong>。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>Q：装不上，提示”解析程序包时出现问题”</strong></p>
+<p>大概率是机型架构问题。这个 APK 只含 <code>armeabi-v7a</code>，如果你的手机是纯 64 位（只支持 arm64-v8a），或者你在 x86 模拟器上装，会装不上。换台普通手机试。</p>
+<p><strong>Q：点了”启动模拟”没反应</strong></p>
+<p>检查三件事，按顺序来：</p>
+<ol>
+<li>开发者选项里的”选择模拟位置信息应用”有没有选中 Fake Location</li>
+<li>定位权限给了没有</li>
+<li>手机上有没有开着”高精度定位”</li>
+</ol>
+<p><strong>Q：模拟一会儿就跳回真实位置了</strong></p>
+<p>常见原因：</p>
+<ul>
+<li>开启了”在 NOROOT 模式下搜索 GPS 信号”——App 里有提示，这个选项在有真实 GPS 信号的环境下会被真位置”抢”回去，<strong>室外建议关掉</strong></li>
+<li>有些系统有额外的定位纠偏（比如某些国产 ROM 的网络定位服务），可以试试开启 ROOT 模式下的基站模拟</li>
+</ul>
+<p><strong>Q：应用检测到我在用虚拟定位</strong></p>
+<p>免 ROOT 模式下没办法彻底规避——因为开发者选项的模拟位置接口本身就是可被检测的。要绕过检测要么用 ROOT 模式开<strong>反检测</strong>，要么用<strong>定制专属包</strong>。</p>
+<p><strong>Q：会不会有安全风险</strong></p>
+<p>这个 APK 请求的权限里包括读取手机状态、存储、悬浮窗等，属于这类工具的常规需求。建议只从可信来源获取安装包，并核对 SHA256。本文附带的文件已核对过哈希，见上方表格。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>Fake Location 算是这类工具里做得比较完整的：免 ROOT 部分已经够用，ROOT 之后的功能深度也够，更新节奏稳定。</p>
+<p>用它做 App 测试、地图功能验证这些正事非常顺手；具体能用在哪些场景，各位自己发挥。</p>
+<p>有不懂的直接看上面那个视频教程，比文字直观。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://jiangdonggeek.cn">J.dong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://jiangdonggeek.cn/2026/11/25/fakelocation/">https://jiangdonggeek.cn/2026/11/25/fakelocation/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">此文章版权归J.dong & 博客所有，软件版权归原作者所有，本文仅作整理与教程记录。</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android/">Android</a><a class="post-meta__tags" href="/tags/%E8%99%9A%E6%8B%9F%E5%AE%9A%E4%BD%8D/">虚拟定位</a><a class="post-meta__tags" href="/tags/FakeLocation/">FakeLocation</a><a class="post-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a></div><div class="post-share"><div class="social-share" data-image="/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css?v=1.1.6" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js?v=1.1.6" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/ loading='lazy'></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src="/img/zfb.jpg" alt="支付宝"/ loading='lazy'></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/10/09/%E5%AE%B6%E6%A0%A1%E9%80%9A/" title="家校通 —— 基于 Python 的学生班级管理系统"><img class="cover" src="/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">家校通 —— 基于 Python 的学生班级管理系统</div></div><div class="info-2"><div class="info-item-1">写在前面这是我之前参加比赛时写的一个小项目 —— 家校通，一个用 Python + tkinter 做的学生班级管理系统。 当时做它的初衷很简单：班主任日常要处理的事务其实非常琐碎，点名、记请假、录成绩、课堂上随机抽人回答问题、分组讨论……这些事情分散在各个 Excel 表和纸质记录里，查一次数据要翻好几个文件。所以就想着把这些都塞进一个程序里，做成”双击就能用”的桌面软件。 代码写完、比赛交完之后它就一直在硬盘里躺着。最近整理文件翻出来，索性打包发布到博客上，一来给自己留个记录，二来如果刚好有做类似东西的同学，可以直接拿去改。  说明：程序里的学生数据是测试数据（张三、李四），不是真实学生信息。默认账号密码也写在下面了。  程序界面程序启动后先是一个登录窗口：  登录进去是主界面，一共四个功能标签页。 学生信息管理录入和管理学生名单，包括姓名、家长电话、住址。表格里会实时显示每个学生的请假状态、请假原因、请假到期时间等信息，底部还有班级总人数统计。 支持把名单导出成 Excel，也支持从 Excel 导入，所以批量建名单不用一个个手敲。   电话栏做了格式校验，填错了会直接弹窗...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/10/09/%E5%AE%B6%E6%A0%A1%E9%80%9A/" title="家校通 —— 基于 Python 的学生班级管理系统"><img class="cover" src="/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-10-09</div><div class="info-item-2">家校通 —— 基于 Python 的学生班级管理系统</div></div><div class="info-2"><div class="info-item-1">写在前面这是我之前参加比赛时写的一个小项目 —— 家校通，一个用 Python + tkinter 做的学生班级管理系统。 当时做它的初衷很简单：班主任日常要处理的事务其实非常琐碎，点名、记请假、录成绩、课堂上随机抽人回答问题、分组讨论……这些事情分散在各个 Excel 表和纸质记录里，查一次数据要翻好几个文件。所以就想着把这些都塞进一个程序里，做成”双击就能用”的桌面软件。 代码写完、比赛交完之后它就一直在硬盘里躺着。最近整理文件翻出来，索性打包发布到博客上，一来给自己留个记录，二来如果刚好有做类似东西的同学，可以直接拿去改。  说明：程序里的学生数据是测试数据（张三、李四），不是真实学生信息。默认账号密码也写在下面了。  程序界面程序启动后先是一个登录窗口：  登录进去是主界面，一共四个功能标签页。 学生信息管理录入和管理学生名单，包括姓名、家长电话、住址。表格里会实时显示每个学生的请假状态、请假原因、请假到期时间等信息，底部还有班级总人数统计。 支持把名单导出成 Excel，也支持从 Excel 导入，所以批量建名单不用一个个手敲。   电话栏做了格式校验，填错了会直接弹窗...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">J.dong</div><div class="author-info-description">生命诚可贵，爱情价更高，若为自由故，二者皆可抛</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fuyuelive"><i class="fab fa-github"></i><span>我的github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">小江的博客，雏形，持续更新中...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">软件信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E4%B8%80%E8%A7%88"><span class="toc-number">3.</span> <span class="toc-text">核心功能一览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">4.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">安装教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%85%8D-ROOT%EF%BC%88%E6%8E%A8%E8%8D%90%E5%85%88%E8%AF%95%E8%BF%99%E4%B8%AA%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">方法一：免 ROOT（推荐先试这个）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9AROOT-%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text">方法二：ROOT 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B"><span class="toc-number">5.3.</span> <span class="toc-text">视频教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3"><span class="toc-number">6.</span> <span class="toc-text">功能详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E6%A8%A1%E6%8B%9F"><span class="toc-number">6.1.</span> <span class="toc-text">位置模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%BA%BF%E6%A8%A1%E6%8B%9F"><span class="toc-number">6.2.</span> <span class="toc-text">路线模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%87%E6%9D%86"><span class="toc-number">6.3.</span> <span class="toc-text">摇杆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E4%B8%9A%E7%89%88%E4%B8%8E%E5%AE%9A%E5%88%B6%E4%B8%93%E5%B1%9E%E5%8C%85"><span class="toc-number">6.4.</span> <span class="toc-text">专业版与定制专属包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">8.</span> <span class="toc-text">最后</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/11/25/fakelocation/" title="Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程"><img src="/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/11/25/fakelocation/" title="Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程">Fake Location 虚拟定位神器 —— 安卓模拟定位安装与使用教程</a><time datetime="2026-11-25T09:00:00.000Z" title="发表于 2026-11-25 17:00:00">2026-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/10/09/%E5%AE%B6%E6%A0%A1%E9%80%9A/" title="家校通 —— 基于 Python 的学生班级管理系统"><img src="/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="家校通 —— 基于 Python 的学生班级管理系统"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/10/09/%E5%AE%B6%E6%A0%A1%E9%80%9A/" title="家校通 —— 基于 Python 的学生班级管理系统">家校通 —— 基于 Python 的学生班级管理系统</a><time datetime="2026-10-09T04:30:00.000Z" title="发表于 2026-10-09 12:30:00">2026-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/15/JiYuTrainer/" title="控制极域 &amp; JiYuTrainer下载"><img src="/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="控制极域 &amp; JiYuTrainer下载"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/03/15/JiYuTrainer/" title="控制极域 &amp; JiYuTrainer下载">控制极域 &amp; JiYuTrainer下载</a><time datetime="2026-03-15T11:31:01.374Z" title="发表于 2026-03-15 19:31:01">2026-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A49%EF%BC%9A%E7%BC%96%E8%BE%91%E5%99%A8%E5%92%8C%E8%84%9A%E6%9C%AC%E7%AF%87/" title="Linux常用命令9：编辑器和脚本篇"><img src="/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux常用命令9：编辑器和脚本篇"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A49%EF%BC%9A%E7%BC%96%E8%BE%91%E5%99%A8%E5%92%8C%E8%84%9A%E6%9C%AC%E7%AF%87/" title="Linux常用命令9：编辑器和脚本篇">Linux常用命令9：编辑器和脚本篇</a><time datetime="2025-11-28T02:31:16.000Z" title="发表于 2025-11-28 10:31:16">2025-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A48%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E7%AF%87/" title="Linux常用命令8：网络命令篇"><img src="/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux常用命令8：网络命令篇"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/11/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A48%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E7%AF%87/" title="Linux常用命令8：网络命令篇">Linux常用命令8：网络命令篇</a><time datetime="2025-11-28T02:31:14.000Z" title="发表于 2025-11-28 10:31:14">2025-11-28</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/%E6%96%87%E7%AB%A0%E9%BB%98%E8%AE%A4%E5%9B%BE%E7%89%87.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By J.dong</span><span class="framework-info"><span> </span><a target="_blank" rel="noopener" href="https://hexo.io"><img src="/img/Frame-Hexo-blue.svg" alt="Hexo Framework" style="height: 20px; vertical-align: middle;"/ loading='lazy'></a><span class="footer-separator">|</span><span></span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src="/img/Theme-Butterfly-6513df.svg" alt="Butterfly Theme" style="height: 20px; vertical-align: middle;"/ loading='lazy'></a></span></div><!-- 一言接口调用--><div class="hitokoto-container"><div id="hitokoto" style="cursor: pointer;">正在加载一言...</div><script>// 获取一言的函数
+function getHitokoto() {
+  const hitokotoElement = document.getElementById('hitokoto');
+  hitokotoElement.textContent = '正在加载...';
+  fetch('https://v.api.aa1.cn/api/yiyan/index.php')
+    .then(response => response.text())
+    .then(data => {
+      // 去除返回数据中的p标签
+      const cleanData = data.replace(/<p[^>]*>|<\/p>/g, '');
+      hitokotoElement.textContent = "「" + cleanData + "」";
+    })
+    .catch(error => {
+      console.error('获取一言失败:', error);
+      hitokotoElement.textContent = '获取一言失败，点击重试';
+    });
+}
+
+// 页面加载时获取一言
+getHitokoto();
+
+// 添加点击事件，实现点击刷新
+document.getElementById('hitokoto').addEventListener('click', getHitokoto);</script></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.2"></script><script src="/js/main.js?v=5.5.2"></script><script src="/js/tw_cn.js?v=5.5.2"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.umd.js?v=6.1.4"></script><script src="/pluginsSrc/instant.page/instantpage.js?v=5.2.0" type="module"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js?v=0.1.16"></script><div class="js-pjax"></div><script src="/js/sakuraPlus.js"></script><div id="music-player" class="aplayer"></div><script>
+// 简单直接的方式初始化播放器
+(function() {
+  // 等待DOM完全加载
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPlayer);
+  } else {
+    initPlayer();
+  }
+  
+  function initPlayer() {
+    // 直接获取已创建的容器
+    const container = document.getElementById('music-player');
+    if (!container) return;
+    
+    // 简单的播放器配置
+    const ap = new APlayer({
+      container: container,
+      fixed: true,
+      mini: true,
+      autoplay: false,
+      theme: '#ad7a86',
+      loop: 'all',
+      order: 'list',
+      preload: 'auto',
+      volume: 1.0,
+      mutex: true,
+      listFolded: true,
+      listMaxHeight: '340px',
+      lrcType: 3,
+      audio: [
+        {
+          name: '遇见',
+          artist: '孙燕姿',
+          url: '/music/遇见.mp3',
+          cover: '/music/img/遇见.jpg',
+          lrc: '/music/lrc/遇见-孙燕姿.lrc'
+        },
+        {
+          name: '你走以后',
+          artist: '王恩信Est&二胖u',
+          url: '/music/你走以后.mp3',
+          cover: '/music/img/你走以后.jpg',
+          lrc: ''
+        },
+        {
+          name: 'Shadow Of The Sun-Max Elto',
+          artist: 'Max Elto',
+          url: '/music/Shadow of the sun.mp3',
+          cover: '/music/img/shadow of the sun.jpg',
+          lrc: '/music/lrc/Shadow Of The Sun-Max Elto.lrc'
+        },
+      ]
+    });
+  }
+})();
+</script><script id="click-heart" src="/pluginsSrc/butterfly-extsrc/dist/click-heart.min.js?v=1.1.6" async="async" mobile="false"></script><script id="click-show-text" src="/pluginsSrc/butterfly-extsrc/dist/click-show-text.min.js?v=1.1.6" data-mobile="false" data-text="I,LOVE,YOU,好好吃饭,好好睡觉,好好工作,好好生活,忘记不开心,记得要快乐" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="/pluginsSrc/aplayer/dist/APlayer.min.css?v=1.10.1" media="print" onload="this.media='all'"><script src="/pluginsSrc/aplayer/dist/APlayer.min.js?v=1.10.1"></script><script src="/pluginsSrc/butterfly-extsrc/metingjs/dist/Meting.min.js?v=1.1.6"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="/pluginsSrc/pjax/pjax.min.js?v=0.2.8"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script src="/js/busuanzi.min.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.2"></script></div></div></body></html>
